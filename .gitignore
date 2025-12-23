@@ -1,0 +1,52 @@
+# --- 1. Python & Virtual Environment ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+.env
+.env.*
+# --- 2. IDE & Editor (VS Code, PyCharm) ---
+.vscode/
+.idea/
+
+# --- 3. AI & ML Models (QUAN TRỌNG: Tránh upload file nặng) ---
+# Bỏ qua các file trọng số model (weights)
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.gguf
+*.h5
+
+# Bỏ qua thư mục chứa model đã train
+models/phobert_joint_nlu/
+
+# --- 4. Vector DB & Indices ---
+# Bỏ qua các file index của Faiss và BM25 (được sinh ra khi chạy code)
+*.index
+*.pkl
+data/indices/
+chroma_db/
+vector_store/
+
+# --- 5. Logs & Temporary Files ---
+*.log
+logs/
+tmp/
+celerybeat-schedule
+
+# --- 6. Data (Tùy chọn) ---
+# Giữ lại recipes.json nhưng bỏ qua các file data rác hoặc quá lớn
+data/raw/synthetic_*.json
+!data/recipes.json 
+!data/products.json
+
+# --- 7. Docker & System ---
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/

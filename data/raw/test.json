@@ -1,0 +1,5684 @@
+[
+  {
+    "text": "Tìm công thức làm Cá nục chiên",
+    "tokens": [
+      "Tìm",
+      "công",
+      "thức",
+      "làm",
+      "Cá",
+      "nục",
+      "chiên"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Cách chế biến Salad xà lách trứng",
+    "tokens": [
+      "Cách",
+      "chế",
+      "biến",
+      "Salad",
+      "xà",
+      "lách",
+      "trứng"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Món Sườn non rim cà chua làm ra sao",
+    "tokens": [
+      "Món",
+      "Sườn",
+      "non",
+      "rim",
+      "cà",
+      "chua",
+      "làm",
+      "ra",
+      "sao"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Recipe Canh củ thập cẩm tôm đi",
+    "tokens": [
+      "Recipe",
+      "Canh",
+      "củ",
+      "thập",
+      "cẩm",
+      "tôm",
+      "đi"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Cách chế biến Salad trái cây nhiệt đới",
+    "tokens": [
+      "Cách",
+      "chế",
+      "biến",
+      "Salad",
+      "trái",
+      "cây",
+      "nhiệt",
+      "đới"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Hướng dẫn làm Trứng chiên cà chua",
+    "tokens": [
+      "Hướng",
+      "dẫn",
+      "làm",
+      "Trứng",
+      "chiên",
+      "cà",
+      "chua"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Recipe Súp khoai tây cà rốt đi",
+    "tokens": [
+      "Recipe",
+      "Súp",
+      "khoai",
+      "tây",
+      "cà",
+      "rốt",
+      "đi"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Cách nấu Sườn kho tiêu ngon",
+    "tokens": [
+      "Cách",
+      "nấu",
+      "Sườn",
+      "kho",
+      "tiêu",
+      "ngon"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Hướng dẫn làm {DISH}",
+    "tokens": [
+      "Hướng",
+      "dẫn",
+      "làm",
+      "{DISH}"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Tìm công thức làm Cá diêu hồng hấp",
+    "tokens": [
+      "Tìm",
+      "công",
+      "thức",
+      "làm",
+      "Cá",
+      "diêu",
+      "hồng",
+      "hấp"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Món Canh rau mồng tơi thịt băm làm ra sao",
+    "tokens": [
+      "Món",
+      "Canh",
+      "rau",
+      "mồng",
+      "tơi",
+      "thịt",
+      "băm",
+      "làm",
+      "ra",
+      "sao"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Cách chế biến Canh bí đỏ thịt xay",
+    "tokens": [
+      "Cách",
+      "chế",
+      "biến",
+      "Canh",
+      "bí",
+      "đỏ",
+      "thịt",
+      "xay"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Cách chế biến Gà chiên nước mắm",
+    "tokens": [
+      "Cách",
+      "chế",
+      "biến",
+      "Gà",
+      "chiên",
+      "nước",
+      "mắm"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Cách nấu Salad xà lách trứng ngon",
+    "tokens": [
+      "Cách",
+      "nấu",
+      "Salad",
+      "xà",
+      "lách",
+      "trứng",
+      "ngon"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Hướng dẫn làm Canh chua đầu cá hồi",
+    "tokens": [
+      "Hướng",
+      "dẫn",
+      "làm",
+      "Canh",
+      "chua",
+      "đầu",
+      "cá",
+      "hồi"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Cho mình công thức {DISH} với",
+    "tokens": [
+      "Cho",
+      "mình",
+      "công",
+      "thức",
+      "{DISH}",
+      "với"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Làm Canh rau dền thịt bằm thế nào",
+    "tokens": [
+      "Làm",
+      "Canh",
+      "rau",
+      "dền",
+      "thịt",
+      "bằm",
+      "thế",
+      "nào"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Tìm công thức làm Canh bí đỏ nấu xương",
+    "tokens": [
+      "Tìm",
+      "công",
+      "thức",
+      "làm",
+      "Canh",
+      "bí",
+      "đỏ",
+      "nấu",
+      "xương"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Recipe Salad xà lách trứng đi",
+    "tokens": [
+      "Recipe",
+      "Salad",
+      "xà",
+      "lách",
+      "trứng",
+      "đi"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Công thức món Ba rọi kho trứng",
+    "tokens": [
+      "Công",
+      "thức",
+      "món",
+      "Ba",
+      "rọi",
+      "kho",
+      "trứng"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Recipe Cá diêu hồng hấp hành đi",
+    "tokens": [
+      "Recipe",
+      "Cá",
+      "diêu",
+      "hồng",
+      "hấp",
+      "hành",
+      "đi"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Món Cá diêu hồng hấp làm ra sao",
+    "tokens": [
+      "Món",
+      "Cá",
+      "diêu",
+      "hồng",
+      "hấp",
+      "làm",
+      "ra",
+      "sao"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Công thức món Bò bít tết khoai tây chiên",
+    "tokens": [
+      "Công",
+      "thức",
+      "món",
+      "Bò",
+      "bít",
+      "tết",
+      "khoai",
+      "tây",
+      "chiên"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Cho mình công thức Cá diêu hồng hấp hành với",
+    "tokens": [
+      "Cho",
+      "mình",
+      "công",
+      "thức",
+      "Cá",
+      "diêu",
+      "hồng",
+      "hấp",
+      "hành",
+      "với"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Công thức món Cá nục kho cà chua",
+    "tokens": [
+      "Công",
+      "thức",
+      "món",
+      "Cá",
+      "nục",
+      "kho",
+      "cà",
+      "chua"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Món Bò bít tết kèm khoai tây làm ra sao",
+    "tokens": [
+      "Món",
+      "Bò",
+      "bít",
+      "tết",
+      "kèm",
+      "khoai",
+      "tây",
+      "làm",
+      "ra",
+      "sao"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Món {DISH} làm ra sao",
+    "tokens": [
+      "Món",
+      "{DISH}",
+      "làm",
+      "ra",
+      "sao"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Công thức món Bò xào hành tây",
+    "tokens": [
+      "Công",
+      "thức",
+      "món",
+      "Bò",
+      "xào",
+      "hành",
+      "tây"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Cách nấu Trứng cút kho tỏi ngon",
+    "tokens": [
+      "Cách",
+      "nấu",
+      "Trứng",
+      "cút",
+      "kho",
+      "tỏi",
+      "ngon"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Món Bò bít tết khoai tây chiên làm ra sao",
+    "tokens": [
+      "Món",
+      "Bò",
+      "bít",
+      "tết",
+      "khoai",
+      "tây",
+      "chiên",
+      "làm",
+      "ra",
+      "sao"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Cho mình công thức Bò bít tết khoai tây chiên với",
+    "tokens": [
+      "Cho",
+      "mình",
+      "công",
+      "thức",
+      "Bò",
+      "bít",
+      "tết",
+      "khoai",
+      "tây",
+      "chiên",
+      "với"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Cho mình công thức {DISH} với",
+    "tokens": [
+      "Cho",
+      "mình",
+      "công",
+      "thức",
+      "{DISH}",
+      "với"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Hướng dẫn làm Gà chiên nước mắm",
+    "tokens": [
+      "Hướng",
+      "dẫn",
+      "làm",
+      "Gà",
+      "chiên",
+      "nước",
+      "mắm"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Tìm công thức làm Rau muống xào tỏi",
+    "tokens": [
+      "Tìm",
+      "công",
+      "thức",
+      "làm",
+      "Rau",
+      "muống",
+      "xào",
+      "tỏi"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Tìm công thức làm Đùi bò xào cà rốt",
+    "tokens": [
+      "Tìm",
+      "công",
+      "thức",
+      "làm",
+      "Đùi",
+      "bò",
+      "xào",
+      "cà",
+      "rốt"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Công thức món Cá basa kho tiêu",
+    "tokens": [
+      "Công",
+      "thức",
+      "món",
+      "Cá",
+      "basa",
+      "kho",
+      "tiêu"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Tìm công thức làm Thịt heo xay viên áp chảo",
+    "tokens": [
+      "Tìm",
+      "công",
+      "thức",
+      "làm",
+      "Thịt",
+      "heo",
+      "xay",
+      "viên",
+      "áp",
+      "chảo"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Món Canh cải bẹ xanh thịt bằm làm ra sao",
+    "tokens": [
+      "Món",
+      "Canh",
+      "cải",
+      "bẹ",
+      "xanh",
+      "thịt",
+      "bằm",
+      "làm",
+      "ra",
+      "sao"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Món Cá diêu hồng hấp làm ra sao",
+    "tokens": [
+      "Món",
+      "Cá",
+      "diêu",
+      "hồng",
+      "hấp",
+      "làm",
+      "ra",
+      "sao"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Recipe Sườn kho tiêu đi",
+    "tokens": [
+      "Recipe",
+      "Sườn",
+      "kho",
+      "tiêu",
+      "đi"
+    ],
+    "intent": "search_recipe",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O"
+    ]
+  },
+  {
+    "text": "Làm Ức gà áp chảo sốt tiêu cần chuẩn bị gì",
+    "tokens": [
+      "Làm",
+      "Ức",
+      "gà",
+      "áp",
+      "chảo",
+      "sốt",
+      "tiêu",
+      "cần",
+      "chuẩn",
+      "bị",
+      "gì"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Nguyên liệu để nấu {DISH} gồm những gì",
+    "tokens": [
+      "Nguyên",
+      "liệu",
+      "để",
+      "nấu",
+      "{DISH}",
+      "gồm",
+      "những",
+      "gì"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Chi tiết cách làm Canh chua đầu cá hồi",
+    "tokens": [
+      "Chi",
+      "tiết",
+      "cách",
+      "làm",
+      "Canh",
+      "chua",
+      "đầu",
+      "cá",
+      "hồi"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Thành phần của Salad xoài cá hộp",
+    "tokens": [
+      "Thành",
+      "phần",
+      "của",
+      "Salad",
+      "xoài",
+      "cá",
+      "hộp"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Thời gian nấu Mì tôm trứng bao lâu",
+    "tokens": [
+      "Thời",
+      "gian",
+      "nấu",
+      "Mì",
+      "tôm",
+      "trứng",
+      "bao",
+      "lâu"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Các bước nấu Đùi bò xào cà rốt ra sao",
+    "tokens": [
+      "Các",
+      "bước",
+      "nấu",
+      "Đùi",
+      "bò",
+      "xào",
+      "cà",
+      "rốt",
+      "ra",
+      "sao"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Hướng dẫn chi tiết Trứng cút kho tỏi",
+    "tokens": [
+      "Hướng",
+      "dẫn",
+      "chi",
+      "tiết",
+      "Trứng",
+      "cút",
+      "kho",
+      "tỏi"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Thành phần của Canh bí đỏ thịt bằm",
+    "tokens": [
+      "Thành",
+      "phần",
+      "của",
+      "Canh",
+      "bí",
+      "đỏ",
+      "thịt",
+      "bằm"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Món Gà kho cà chua ăn với gì ngon",
+    "tokens": [
+      "Món",
+      "Gà",
+      "kho",
+      "cà",
+      "chua",
+      "ăn",
+      "với",
+      "gì",
+      "ngon"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Hướng dẫn chi tiết {DISH}",
+    "tokens": [
+      "Hướng",
+      "dẫn",
+      "chi",
+      "tiết",
+      "{DISH}"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Chi tiết cách làm Canh cải bẹ xanh nấu thịt xay",
+    "tokens": [
+      "Chi",
+      "tiết",
+      "cách",
+      "làm",
+      "Canh",
+      "cải",
+      "bẹ",
+      "xanh",
+      "nấu",
+      "thịt",
+      "xay"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Hướng dẫn chi tiết Thịt heo xay viên áp chảo",
+    "tokens": [
+      "Hướng",
+      "dẫn",
+      "chi",
+      "tiết",
+      "Thịt",
+      "heo",
+      "xay",
+      "viên",
+      "áp",
+      "chảo"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Nguyên liệu để nấu Bắp cải xào thịt heo gồm những gì",
+    "tokens": [
+      "Nguyên",
+      "liệu",
+      "để",
+      "nấu",
+      "Bắp",
+      "cải",
+      "xào",
+      "thịt",
+      "heo",
+      "gồm",
+      "những",
+      "gì"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Món Chân giò hầm khoai tây ăn với gì ngon",
+    "tokens": [
+      "Món",
+      "Chân",
+      "giò",
+      "hầm",
+      "khoai",
+      "tây",
+      "ăn",
+      "với",
+      "gì",
+      "ngon"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Nguyên liệu để nấu Salad xà lách trộn dầu giấm trứng gồm những gì",
+    "tokens": [
+      "Nguyên",
+      "liệu",
+      "để",
+      "nấu",
+      "Salad",
+      "xà",
+      "lách",
+      "trộn",
+      "dầu",
+      "giấm",
+      "trứng",
+      "gồm",
+      "những",
+      "gì"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Chi tiết cách làm Cá nục sốt cà chua",
+    "tokens": [
+      "Chi",
+      "tiết",
+      "cách",
+      "làm",
+      "Cá",
+      "nục",
+      "sốt",
+      "cà",
+      "chua"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Chi tiết cách làm Bò xào hành tây",
+    "tokens": [
+      "Chi",
+      "tiết",
+      "cách",
+      "làm",
+      "Bò",
+      "xào",
+      "hành",
+      "tây"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Món Canh rau dền thịt bằm ăn với gì ngon",
+    "tokens": [
+      "Món",
+      "Canh",
+      "rau",
+      "dền",
+      "thịt",
+      "bằm",
+      "ăn",
+      "với",
+      "gì",
+      "ngon"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thời gian nấu Gà xào khoai tây bao lâu",
+    "tokens": [
+      "Thời",
+      "gian",
+      "nấu",
+      "Gà",
+      "xào",
+      "khoai",
+      "tây",
+      "bao",
+      "lâu"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Hướng dẫn chi tiết Canh bí xanh xương heo",
+    "tokens": [
+      "Hướng",
+      "dẫn",
+      "chi",
+      "tiết",
+      "Canh",
+      "bí",
+      "xanh",
+      "xương",
+      "heo"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Các bước nấu Mì xào bò rau cải ra sao",
+    "tokens": [
+      "Các",
+      "bước",
+      "nấu",
+      "Mì",
+      "xào",
+      "bò",
+      "rau",
+      "cải",
+      "ra",
+      "sao"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Làm Gà xào khoai tây cần chuẩn bị gì",
+    "tokens": [
+      "Làm",
+      "Gà",
+      "xào",
+      "khoai",
+      "tây",
+      "cần",
+      "chuẩn",
+      "bị",
+      "gì"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thời gian nấu Salad xoài cá hộp bao lâu",
+    "tokens": [
+      "Thời",
+      "gian",
+      "nấu",
+      "Salad",
+      "xoài",
+      "cá",
+      "hộp",
+      "bao",
+      "lâu"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Chi tiết cách làm Canh chua đầu cá hồi",
+    "tokens": [
+      "Chi",
+      "tiết",
+      "cách",
+      "làm",
+      "Canh",
+      "chua",
+      "đầu",
+      "cá",
+      "hồi"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Món {DISH} ăn với gì ngon",
+    "tokens": [
+      "Món",
+      "{DISH}",
+      "ăn",
+      "với",
+      "gì",
+      "ngon"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Chi tiết cách làm Thịt heo xay viên áp chảo",
+    "tokens": [
+      "Chi",
+      "tiết",
+      "cách",
+      "làm",
+      "Thịt",
+      "heo",
+      "xay",
+      "viên",
+      "áp",
+      "chảo"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Nguyên liệu để nấu Canh cải bẹ xanh thịt bằm gồm những gì",
+    "tokens": [
+      "Nguyên",
+      "liệu",
+      "để",
+      "nấu",
+      "Canh",
+      "cải",
+      "bẹ",
+      "xanh",
+      "thịt",
+      "bằm",
+      "gồm",
+      "những",
+      "gì"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thành phần của Canh cải bẹ xanh nấu thịt xay",
+    "tokens": [
+      "Thành",
+      "phần",
+      "của",
+      "Canh",
+      "cải",
+      "bẹ",
+      "xanh",
+      "nấu",
+      "thịt",
+      "xay"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Thời gian nấu Gà kho gừng bao lâu",
+    "tokens": [
+      "Thời",
+      "gian",
+      "nấu",
+      "Gà",
+      "kho",
+      "gừng",
+      "bao",
+      "lâu"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Món Salad xà lách trứng ăn với gì ngon",
+    "tokens": [
+      "Món",
+      "Salad",
+      "xà",
+      "lách",
+      "trứng",
+      "ăn",
+      "với",
+      "gì",
+      "ngon"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Món Trứng chiên cà chua ăn với gì ngon",
+    "tokens": [
+      "Món",
+      "Trứng",
+      "chiên",
+      "cà",
+      "chua",
+      "ăn",
+      "với",
+      "gì",
+      "ngon"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thời gian nấu Thịt heo xay viên áp chảo bao lâu",
+    "tokens": [
+      "Thời",
+      "gian",
+      "nấu",
+      "Thịt",
+      "heo",
+      "xay",
+      "viên",
+      "áp",
+      "chảo",
+      "bao",
+      "lâu"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thời gian nấu {DISH} bao lâu",
+    "tokens": [
+      "Thời",
+      "gian",
+      "nấu",
+      "{DISH}",
+      "bao",
+      "lâu"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Làm Canh mồng tơi trứng cần chuẩn bị gì",
+    "tokens": [
+      "Làm",
+      "Canh",
+      "mồng",
+      "tơi",
+      "trứng",
+      "cần",
+      "chuẩn",
+      "bị",
+      "gì"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Làm Cánh gà chiên giòn cần chuẩn bị gì",
+    "tokens": [
+      "Làm",
+      "Cánh",
+      "gà",
+      "chiên",
+      "giòn",
+      "cần",
+      "chuẩn",
+      "bị",
+      "gì"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Các bước nấu Gà kho cà chua ra sao",
+    "tokens": [
+      "Các",
+      "bước",
+      "nấu",
+      "Gà",
+      "kho",
+      "cà",
+      "chua",
+      "ra",
+      "sao"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Chi tiết cách làm Gà kho gừng",
+    "tokens": [
+      "Chi",
+      "tiết",
+      "cách",
+      "làm",
+      "Gà",
+      "kho",
+      "gừng"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Thành phần của Cá diêu hồng hấp gừng",
+    "tokens": [
+      "Thành",
+      "phần",
+      "của",
+      "Cá",
+      "diêu",
+      "hồng",
+      "hấp",
+      "gừng"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Thời gian nấu Canh bí đỏ nấu xương bao lâu",
+    "tokens": [
+      "Thời",
+      "gian",
+      "nấu",
+      "Canh",
+      "bí",
+      "đỏ",
+      "nấu",
+      "xương",
+      "bao",
+      "lâu"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Món Salad xoài cá hộp ăn với gì ngon",
+    "tokens": [
+      "Món",
+      "Salad",
+      "xoài",
+      "cá",
+      "hộp",
+      "ăn",
+      "với",
+      "gì",
+      "ngon"
+    ],
+    "intent": "ask_recipe_detail",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "{DISH} thêm gà mía nguyên con nhập khẩu",
+    "tokens": [
+      "{DISH}",
+      "thêm",
+      "gà",
+      "mía",
+      "nguyên",
+      "con",
+      "nhập",
+      "khẩu"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Trứng cút kho tỏi cho người ăn kiêng",
+    "tokens": [
+      "Trứng",
+      "cút",
+      "kho",
+      "tỏi",
+      "cho",
+      "người",
+      "ăn",
+      "kiêng"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Công thức Trứng chiên cà chua với hộp 10 trứng gà tươi",
+    "tokens": [
+      "Công",
+      "thức",
+      "Trứng",
+      "chiên",
+      "cà",
+      "chua",
+      "với",
+      "hộp",
+      "10",
+      "trứng",
+      "gà",
+      "tươi"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "{DISH} thêm bánh cá vị tôm nướng orion 35g",
+    "tokens": [
+      "{DISH}",
+      "thêm",
+      "bánh",
+      "cá",
+      "vị",
+      "tôm",
+      "nướng",
+      "orion",
+      "35g"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Cá diêu hồng hấp gừng phiên bản chua cay",
+    "tokens": [
+      "Cá",
+      "diêu",
+      "hồng",
+      "hấp",
+      "gừng",
+      "phiên",
+      "bản",
+      "chua",
+      "cay"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-TASTE",
+      "I-TASTE"
+    ]
+  },
+  {
+    "text": "Canh rau dền thịt bằm không đường",
+    "tokens": [
+      "Canh",
+      "rau",
+      "dền",
+      "thịt",
+      "bằm",
+      "không",
+      "đường"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "B-EXCLUDE",
+      "I-EXCLUDE"
+    ]
+  },
+  {
+    "text": "Canh rau dền trứng phiên bản thơm",
+    "tokens": [
+      "Canh",
+      "rau",
+      "dền",
+      "trứng",
+      "phiên",
+      "bản",
+      "thơm"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-TASTE"
+    ]
+  },
+  {
+    "text": "{DISH} cho người ăn kiêng",
+    "tokens": [
+      "{DISH}",
+      "cho",
+      "người",
+      "ăn",
+      "kiêng"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Công thức Trứng chiên thịt bằm với nước mắm",
+    "tokens": [
+      "Công",
+      "thức",
+      "Trứng",
+      "chiên",
+      "thịt",
+      "bằm",
+      "với",
+      "nước",
+      "mắm"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Trứng chiên cà chua phiên bản chua ngọt",
+    "tokens": [
+      "Trứng",
+      "chiên",
+      "cà",
+      "chua",
+      "phiên",
+      "bản",
+      "chua",
+      "ngọt"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-TASTE",
+      "I-TASTE"
+    ]
+  },
+  {
+    "text": "Tìm Cá nục sốt cà chua không dùng không cay",
+    "tokens": [
+      "Tìm",
+      "Cá",
+      "nục",
+      "sốt",
+      "cà",
+      "chua",
+      "không",
+      "dùng",
+      "không",
+      "cay"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-EXCLUDE",
+      "I-EXCLUDE"
+    ]
+  },
+  {
+    "text": "Công thức Chân giò hầm su su cà rốt với dầu ăn hạt cải simply",
+    "tokens": [
+      "Công",
+      "thức",
+      "Chân",
+      "giò",
+      "hầm",
+      "su",
+      "su",
+      "cà",
+      "rốt",
+      "với",
+      "dầu",
+      "ăn",
+      "hạt",
+      "cải",
+      "simply"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Bò xào rau muống thêm {INGREDIENT}",
+    "tokens": [
+      "Bò",
+      "xào",
+      "rau",
+      "muống",
+      "thêm",
+      "{INGREDIENT}"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Làm Cá nục kho cà chua mà không tỏi",
+    "tokens": [
+      "Làm",
+      "Cá",
+      "nục",
+      "kho",
+      "cà",
+      "chua",
+      "mà",
+      "không",
+      "tỏi"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "B-EXCLUDE",
+      "I-EXCLUDE"
+    ]
+  },
+  {
+    "text": "Sườn kho tiêu phiên bản mặn",
+    "tokens": [
+      "Sườn",
+      "kho",
+      "tiêu",
+      "phiên",
+      "bản",
+      "mặn"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-TASTE"
+    ]
+  },
+  {
+    "text": "Sườn non xào khoai tây thêm mì ăn liền kang shi fu gà nấm hương",
+    "tokens": [
+      "Sườn",
+      "non",
+      "xào",
+      "khoai",
+      "tây",
+      "thêm",
+      "mì",
+      "ăn",
+      "liền",
+      "kang",
+      "shi",
+      "fu",
+      "gà",
+      "nấm",
+      "hương"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Công thức Canh chua đầu cá hồi với {INGREDIENT}",
+    "tokens": [
+      "Công",
+      "thức",
+      "Canh",
+      "chua",
+      "đầu",
+      "cá",
+      "hồi",
+      "với",
+      "{INGREDIENT}"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Làm Rau muống xào tỏi mà không giá",
+    "tokens": [
+      "Làm",
+      "Rau",
+      "muống",
+      "xào",
+      "tỏi",
+      "mà",
+      "không",
+      "giá"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "B-EXCLUDE",
+      "I-EXCLUDE"
+    ]
+  },
+  {
+    "text": "Salad xà lách trộn dầu giấm trứng kiểu miền Bắc",
+    "tokens": [
+      "Salad",
+      "xà",
+      "lách",
+      "trộn",
+      "dầu",
+      "giấm",
+      "trứng",
+      "kiểu",
+      "miền",
+      "Bắc"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Sườn chiên nước mắm không cay",
+    "tokens": [
+      "Sườn",
+      "chiên",
+      "nước",
+      "mắm",
+      "không",
+      "cay"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "B-EXCLUDE",
+      "I-EXCLUDE"
+    ]
+  },
+  {
+    "text": "Tìm Ba rọi kho trứng không dùng không ngò",
+    "tokens": [
+      "Tìm",
+      "Ba",
+      "rọi",
+      "kho",
+      "trứng",
+      "không",
+      "dùng",
+      "không",
+      "ngò"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-EXCLUDE",
+      "I-EXCLUDE"
+    ]
+  },
+  {
+    "text": "Canh mồng tơi trứng phiên bản cay nồng",
+    "tokens": [
+      "Canh",
+      "mồng",
+      "tơi",
+      "trứng",
+      "phiên",
+      "bản",
+      "cay",
+      "nồng"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-TASTE",
+      "I-TASTE"
+    ]
+  },
+  {
+    "text": "Rau muống xào trứng thêm {INGREDIENT}",
+    "tokens": [
+      "Rau",
+      "muống",
+      "xào",
+      "trứng",
+      "thêm",
+      "{INGREDIENT}"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Công thức Ức gà xào cà chua với ức gà",
+    "tokens": [
+      "Công",
+      "thức",
+      "Ức",
+      "gà",
+      "xào",
+      "cà",
+      "chua",
+      "với",
+      "ức",
+      "gà"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Tìm Bò bít tết kèm khoai tây không dùng không mắm",
+    "tokens": [
+      "Tìm",
+      "Bò",
+      "bít",
+      "tết",
+      "kèm",
+      "khoai",
+      "tây",
+      "không",
+      "dùng",
+      "không",
+      "mắm"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-EXCLUDE",
+      "I-EXCLUDE"
+    ]
+  },
+  {
+    "text": "Cá diêu hồng hấp chua ngọt",
+    "tokens": [
+      "Cá",
+      "diêu",
+      "hồng",
+      "hấp",
+      "chua",
+      "ngọt"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "B-TASTE",
+      "I-TASTE"
+    ]
+  },
+  {
+    "text": "{DISH} kiểu miền Bắc",
+    "tokens": [
+      "{DISH}",
+      "kiểu",
+      "miền",
+      "Bắc"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Tìm Salad trái cây nhiệt đới không dùng không đường",
+    "tokens": [
+      "Tìm",
+      "Salad",
+      "trái",
+      "cây",
+      "nhiệt",
+      "đới",
+      "không",
+      "dùng",
+      "không",
+      "đường"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-EXCLUDE",
+      "I-EXCLUDE"
+    ]
+  },
+  {
+    "text": "Công thức Salad xoài cá hộp với {INGREDIENT}",
+    "tokens": [
+      "Công",
+      "thức",
+      "Salad",
+      "xoài",
+      "cá",
+      "hộp",
+      "với",
+      "{INGREDIENT}"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Rau muống xào tỏi phiên bản mặn",
+    "tokens": [
+      "Rau",
+      "muống",
+      "xào",
+      "tỏi",
+      "phiên",
+      "bản",
+      "mặn"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-TASTE"
+    ]
+  },
+  {
+    "text": "Sườn non rim cà chua ít dầu",
+    "tokens": [
+      "Sườn",
+      "non",
+      "rim",
+      "cà",
+      "chua",
+      "ít",
+      "dầu"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "B-EXCLUDE",
+      "I-EXCLUDE"
+    ]
+  },
+  {
+    "text": "Ức gà xào cà chua mặn",
+    "tokens": [
+      "Ức",
+      "gà",
+      "xào",
+      "cà",
+      "chua",
+      "mặn"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "B-TASTE"
+    ]
+  },
+  {
+    "text": "Công thức Cá nục sốt cà chua với đùi bò",
+    "tokens": [
+      "Công",
+      "thức",
+      "Cá",
+      "nục",
+      "sốt",
+      "cà",
+      "chua",
+      "với",
+      "đùi",
+      "bò"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Mì tôm trứng phiên bản chua cay",
+    "tokens": [
+      "Mì",
+      "tôm",
+      "trứng",
+      "phiên",
+      "bản",
+      "chua",
+      "cay"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "B-TASTE",
+      "I-TASTE"
+    ]
+  },
+  {
+    "text": "{DISH} kiểu miền Bắc",
+    "tokens": [
+      "{DISH}",
+      "kiểu",
+      "miền",
+      "Bắc"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Ức gà áp chảo sốt tiêu kiểu miền Bắc",
+    "tokens": [
+      "Ức",
+      "gà",
+      "áp",
+      "chảo",
+      "sốt",
+      "tiêu",
+      "kiểu",
+      "miền",
+      "Bắc"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "{DISH} phiên bản cay nồng",
+    "tokens": [
+      "{DISH}",
+      "phiên",
+      "bản",
+      "cay",
+      "nồng"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-TASTE",
+      "I-TASTE"
+    ]
+  },
+  {
+    "text": "Cá diêu hồng hấp gừng chua ngọt",
+    "tokens": [
+      "Cá",
+      "diêu",
+      "hồng",
+      "hấp",
+      "gừng",
+      "chua",
+      "ngọt"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "B-TASTE",
+      "I-TASTE"
+    ]
+  },
+  {
+    "text": "Sườn chiên nước mắm thêm cam sành tươi ngon, mọng nước",
+    "tokens": [
+      "Sườn",
+      "chiên",
+      "nước",
+      "mắm",
+      "thêm",
+      "cam",
+      "sành",
+      "tươi",
+      "ngon,",
+      "mọng",
+      "nước"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Cá nục kho cà chua đậm đà",
+    "tokens": [
+      "Cá",
+      "nục",
+      "kho",
+      "cà",
+      "chua",
+      "đậm",
+      "đà"
+    ],
+    "intent": "refine_search",
+    "bio_labels": [
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "B-TASTE",
+      "I-TASTE"
+    ]
+  },
+  {
+    "text": "Giỏ hàng thêm nửa {UNIT} thùng 48",
+    "tokens": [
+      "Giỏ",
+      "hàng",
+      "thêm",
+      "nửa",
+      "{UNIT}",
+      "thùng",
+      "48"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Thêm thùng 30 gói mì omachi lẩu tôm càng 80g số lượng hai muỗng",
+    "tokens": [
+      "Thêm",
+      "thùng",
+      "30",
+      "gói",
+      "mì",
+      "omachi",
+      "lẩu",
+      "tôm",
+      "càng",
+      "80g",
+      "số",
+      "lượng",
+      "hai",
+      "muỗng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT"
+    ]
+  },
+  {
+    "text": "Giỏ hàng thêm nửa kg tép bánh tráng",
+    "tokens": [
+      "Giỏ",
+      "hàng",
+      "thêm",
+      "nửa",
+      "kg",
+      "tép",
+      "bánh",
+      "tráng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "I-INGREDIENT",
+      "O"
+    ]
+  },
+  {
+    "text": "Giỏ hàng thêm 2 chai dưa leo",
+    "tokens": [
+      "Giỏ",
+      "hàng",
+      "thêm",
+      "2",
+      "chai",
+      "dưa",
+      "leo"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Thêm 1 gam rau cải ngồng tươi bịch 300g vào giỏ hàng",
+    "tokens": [
+      "Thêm",
+      "1",
+      "gam",
+      "rau",
+      "cải",
+      "ngồng",
+      "tươi",
+      "bịch",
+      "300g",
+      "vào",
+      "giỏ",
+      "hàng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thêm nửa thìa sườn cốt lết c.p vào giỏ hàng",
+    "tokens": [
+      "Thêm",
+      "nửa",
+      "thìa",
+      "sườn",
+      "cốt",
+      "lết",
+      "c.p",
+      "vào",
+      "giỏ",
+      "hàng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thêm nửa cái thùng 24 lon redbull thái kẽm 250ml vào giỏ hàng",
+    "tokens": [
+      "Thêm",
+      "nửa",
+      "cái",
+      "thùng",
+      "24",
+      "lon",
+      "redbull",
+      "thái",
+      "kẽm",
+      "250ml",
+      "vào",
+      "giỏ",
+      "hàng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giỏ hàng thêm hai quả sườn cốt lết heo làm sạch 500g",
+    "tokens": [
+      "Giỏ",
+      "hàng",
+      "thêm",
+      "hai",
+      "quả",
+      "sườn",
+      "cốt",
+      "lết",
+      "heo",
+      "làm",
+      "sạch",
+      "500g"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Mua thêm {QUANTITY} {UNIT} cá thu sốt cà vega cho Trứng om bí đỏ",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "{QUANTITY}",
+      "{UNIT}",
+      "cá",
+      "thu",
+      "sốt",
+      "cà",
+      "vega",
+      "cho",
+      "Trứng",
+      "om",
+      "bí",
+      "đỏ"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Mua thêm một ít chai xương gà có thịt 500g cho Salad ức gà trộn dầu giấm",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "một",
+      "ít",
+      "chai",
+      "xương",
+      "gà",
+      "có",
+      "thịt",
+      "500g",
+      "cho",
+      "Salad",
+      "ức",
+      "gà",
+      "trộn",
+      "dầu",
+      "giấm"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thêm {QUANTITY} hộp {INGREDIENT} vào giỏ hàng",
+    "tokens": [
+      "Thêm",
+      "{QUANTITY}",
+      "hộp",
+      "{INGREDIENT}",
+      "vào",
+      "giỏ",
+      "hàng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-UNIT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thêm 24 mì khoai tây cung đình tôm 65g số lượng nửa gói",
+    "tokens": [
+      "Thêm",
+      "24",
+      "mì",
+      "khoai",
+      "tây",
+      "cung",
+      "đình",
+      "tôm",
+      "65g",
+      "số",
+      "lượng",
+      "nửa",
+      "gói"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT"
+    ]
+  },
+  {
+    "text": "Mua một nửa cái xương gà có thịt 500g",
+    "tokens": [
+      "Mua",
+      "một",
+      "nửa",
+      "cái",
+      "xương",
+      "gà",
+      "có",
+      "thịt",
+      "500g"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O"
+    ]
+  },
+  {
+    "text": "Thêm hai lạng gói {INGREDIENT} vào giỏ hàng",
+    "tokens": [
+      "Thêm",
+      "hai",
+      "lạng",
+      "gói",
+      "{INGREDIENT}",
+      "vào",
+      "giỏ",
+      "hàng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giỏ hàng thêm {QUANTITY} cái đùi tỏi gà tươi",
+    "tokens": [
+      "Giỏ",
+      "hàng",
+      "thêm",
+      "{QUANTITY}",
+      "cái",
+      "đùi",
+      "tỏi",
+      "gà",
+      "tươi"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Thêm 3 kg {INGREDIENT} vào giỏ hàng",
+    "tokens": [
+      "Thêm",
+      "3",
+      "kg",
+      "{INGREDIENT}",
+      "vào",
+      "giỏ",
+      "hàng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Mua thêm 1 gói hành tây củ tươi ngon, giá cả cực tốt cho {DISH}",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "1",
+      "gói",
+      "hành",
+      "tây",
+      "củ",
+      "tươi",
+      "ngon,",
+      "giá",
+      "cả",
+      "cực",
+      "tốt",
+      "cho",
+      "{DISH}"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thêm cá diêu hồng làm sạch giá rẻ số lượng nửa tép",
+    "tokens": [
+      "Thêm",
+      "cá",
+      "diêu",
+      "hồng",
+      "làm",
+      "sạch",
+      "giá",
+      "rẻ",
+      "số",
+      "lượng",
+      "nửa",
+      "tép"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT"
+    ]
+  },
+  {
+    "text": "Mua 3 lạng canh củ thập cẩm tôm",
+    "tokens": [
+      "Mua",
+      "3",
+      "lạng",
+      "canh",
+      "củ",
+      "thập",
+      "cẩm",
+      "tôm"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Mua 3 quả dưa hấu đỏ tươi ngọt trái",
+    "tokens": [
+      "Mua",
+      "3",
+      "quả",
+      "dưa",
+      "hấu",
+      "đỏ",
+      "tươi",
+      "ngọt",
+      "trái"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Thêm 3 muỗng 2 vào giỏ hàng",
+    "tokens": [
+      "Thêm",
+      "3",
+      "muỗng",
+      "2",
+      "vào",
+      "giỏ",
+      "hàng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Mua thêm một ít lít nạm bò 150g tươi ngon, cho Mì tôm trứng",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "một",
+      "ít",
+      "lít",
+      "nạm",
+      "bò",
+      "150g",
+      "tươi",
+      "ngon,",
+      "cho",
+      "Mì",
+      "tôm",
+      "trứng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Cho nửa lít nạm bò vào giỏ",
+    "tokens": [
+      "Cho",
+      "nửa",
+      "lít",
+      "nạm",
+      "bò",
+      "vào",
+      "giỏ"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Mua một lít tỏi",
+    "tokens": [
+      "Mua",
+      "một",
+      "lít",
+      "tỏi"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Mua thêm hai lạng thìa cá nục xốt cà thai ship 155g | bách hoá xanh online cho Gà xào khoai tây",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "hai",
+      "lạng",
+      "thìa",
+      "cá",
+      "nục",
+      "xốt",
+      "cà",
+      "thai",
+      "ship",
+      "155g",
+      "|",
+      "bách",
+      "hoá",
+      "xanh",
+      "online",
+      "cho",
+      "Gà",
+      "xào",
+      "khoai",
+      "tây"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thêm nguyên liệu {INGREDIENT} một ít gói",
+    "tokens": [
+      "Thêm",
+      "nguyên",
+      "liệu",
+      "{INGREDIENT}",
+      "một",
+      "ít",
+      "gói"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT"
+    ]
+  },
+  {
+    "text": "Thêm một nửa lít {INGREDIENT} vào giỏ hàng",
+    "tokens": [
+      "Thêm",
+      "một",
+      "nửa",
+      "lít",
+      "{INGREDIENT}",
+      "vào",
+      "giỏ",
+      "hàng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giỏ hàng thêm một hộp rau dền khoảng 500g tươi ngon,",
+    "tokens": [
+      "Giỏ",
+      "hàng",
+      "thêm",
+      "một",
+      "hộp",
+      "rau",
+      "dền",
+      "khoảng",
+      "500g",
+      "tươi",
+      "ngon,"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Thêm gà mía nguyên con nhập khẩu số lượng nửa quả",
+    "tokens": [
+      "Thêm",
+      "gà",
+      "mía",
+      "nguyên",
+      "con",
+      "nhập",
+      "khẩu",
+      "số",
+      "lượng",
+      "nửa",
+      "quả"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT"
+    ]
+  },
+  {
+    "text": "Mua một lạng thùng 30 gói mì omachi lẩu tôm càng 80g",
+    "tokens": [
+      "Mua",
+      "một",
+      "lạng",
+      "thùng",
+      "30",
+      "gói",
+      "mì",
+      "omachi",
+      "lẩu",
+      "tôm",
+      "càng",
+      "80g"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Mua thêm nửa kg {UNIT} nạm bò sạch tươi ngon cho Đùi bò xào cà rốt",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "nửa",
+      "kg",
+      "{UNIT}",
+      "nạm",
+      "bò",
+      "sạch",
+      "tươi",
+      "ngon",
+      "cho",
+      "Đùi",
+      "bò",
+      "xào",
+      "cà",
+      "rốt"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Mua thêm một nửa bó dầu màu điều cho Cơm chiên cá ngừ",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "một",
+      "nửa",
+      "bó",
+      "dầu",
+      "màu",
+      "điều",
+      "cho",
+      "Cơm",
+      "chiên",
+      "cá",
+      "ngừ"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thêm hành ngò số lượng 3 cái",
+    "tokens": [
+      "Thêm",
+      "hành",
+      "ngò",
+      "số",
+      "lượng",
+      "3",
+      "cái"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT"
+    ]
+  },
+  {
+    "text": "Thêm nguyên liệu thùng 30 gói mì omachi lẩu tôm càng 80g 1 lạng",
+    "tokens": [
+      "Thêm",
+      "nguyên",
+      "liệu",
+      "thùng",
+      "30",
+      "gói",
+      "mì",
+      "omachi",
+      "lẩu",
+      "tôm",
+      "càng",
+      "80g",
+      "1",
+      "lạng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "B-QUANTITY",
+      "B-UNIT"
+    ]
+  },
+  {
+    "text": "Mua thêm hai lạng gói cá ngừ ngâm dầu tuna việt nam 140g cho Canh rau dền trứng",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "hai",
+      "lạng",
+      "gói",
+      "cá",
+      "ngừ",
+      "ngâm",
+      "dầu",
+      "tuna",
+      "việt",
+      "nam",
+      "140g",
+      "cho",
+      "Canh",
+      "rau",
+      "dền",
+      "trứng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Mua thêm một {UNIT} cá nục sốt cà cay sea crown 155g cho Canh chua đầu cá hồi",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "một",
+      "{UNIT}",
+      "cá",
+      "nục",
+      "sốt",
+      "cà",
+      "cay",
+      "sea",
+      "crown",
+      "155g",
+      "cho",
+      "Canh",
+      "chua",
+      "đầu",
+      "cá",
+      "hồi"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-QUANTITY",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thêm nguyên liệu cải thìa 5 hộp",
+    "tokens": [
+      "Thêm",
+      "nguyên",
+      "liệu",
+      "cải",
+      "thìa",
+      "5",
+      "hộp"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "B-QUANTITY",
+      "B-UNIT"
+    ]
+  },
+  {
+    "text": "Giỏ hàng thêm {QUANTITY} quả cải bẹ xanh",
+    "tokens": [
+      "Giỏ",
+      "hàng",
+      "thêm",
+      "{QUANTITY}",
+      "quả",
+      "cải",
+      "bẹ",
+      "xanh"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Mua thêm 5 hộp lê đường cho {DISH}",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "5",
+      "hộp",
+      "lê",
+      "đường",
+      "cho",
+      "{DISH}"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Mua thêm {QUANTITY} ml {INGREDIENT} cho Gà kho gừng",
+    "tokens": [
+      "Mua",
+      "thêm",
+      "{QUANTITY}",
+      "ml",
+      "{INGREDIENT}",
+      "cho",
+      "Gà",
+      "kho",
+      "gừng"
+    ],
+    "intent": "add_ingredients_to_cart",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-UNIT",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH"
+    ]
+  },
+  {
+    "text": "Giá ba rọi heo hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "ba",
+      "rọi",
+      "heo",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Ước tính giá 5 hộp đùi gà góc tư làm sạch",
+    "tokens": [
+      "Ước",
+      "tính",
+      "giá",
+      "5",
+      "hộp",
+      "đùi",
+      "gà",
+      "góc",
+      "tư",
+      "làm",
+      "sạch"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Giá bơ hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "bơ",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Chi phí nguyên liệu cho Salad xoài cá hộp khoảng bao nhiêu",
+    "tokens": [
+      "Chi",
+      "phí",
+      "nguyên",
+      "liệu",
+      "cho",
+      "Salad",
+      "xoài",
+      "cá",
+      "hộp",
+      "khoảng",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá khoảng bao nhiêu cho {QUANTITY} chai bơ sáp 034 rất dẻo",
+    "tokens": [
+      "Giá",
+      "khoảng",
+      "bao",
+      "nhiêu",
+      "cho",
+      "{QUANTITY}",
+      "chai",
+      "bơ",
+      "sáp",
+      "034",
+      "rất",
+      "dẻo"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Chi phí nguyên liệu cho Súp khoai tây cà rốt khoảng bao nhiêu",
+    "tokens": [
+      "Chi",
+      "phí",
+      "nguyên",
+      "liệu",
+      "cho",
+      "Súp",
+      "khoai",
+      "tây",
+      "cà",
+      "rốt",
+      "khoảng",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá trứng gà so hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "trứng",
+      "gà",
+      "so",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Bao nhiêu tiền một chai thịt đùi heo 300g",
+    "tokens": [
+      "Bao",
+      "nhiêu",
+      "tiền",
+      "một",
+      "chai",
+      "thịt",
+      "đùi",
+      "heo",
+      "300g"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Giá {INGREDIENT} hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "{INGREDIENT}",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Ước lượng giá mua 1 bánh cracker dừa sầu riêng bibica gooka 360g",
+    "tokens": [
+      "Ước",
+      "lượng",
+      "giá",
+      "mua",
+      "1",
+      "bánh",
+      "cracker",
+      "dừa",
+      "sầu",
+      "riêng",
+      "bibica",
+      "gooka",
+      "360g"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Chi phí nguyên liệu cho Cánh gà chiên giòn khoảng bao nhiêu",
+    "tokens": [
+      "Chi",
+      "phí",
+      "nguyên",
+      "liệu",
+      "cho",
+      "Cánh",
+      "gà",
+      "chiên",
+      "giòn",
+      "khoảng",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá của dầu đậu nành janbee là bao nhiêu",
+    "tokens": [
+      "Giá",
+      "của",
+      "dầu",
+      "đậu",
+      "nành",
+      "janbee",
+      "là",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá khoảng bao nhiêu cho một nửa thìa đùi gà góc tư làm sạch",
+    "tokens": [
+      "Giá",
+      "khoảng",
+      "bao",
+      "nhiêu",
+      "cho",
+      "một",
+      "nửa",
+      "thìa",
+      "đùi",
+      "gà",
+      "góc",
+      "tư",
+      "làm",
+      "sạch"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-UNIT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O"
+    ]
+  },
+  {
+    "text": "Ước tính giá {QUANTITY} kg trứng gà ta",
+    "tokens": [
+      "Ước",
+      "tính",
+      "giá",
+      "{QUANTITY}",
+      "kg",
+      "trứng",
+      "gà",
+      "ta"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Chi phí nguyên liệu cho Rau muống xào tỏi khoảng bao nhiêu",
+    "tokens": [
+      "Chi",
+      "phí",
+      "nguyên",
+      "liệu",
+      "cho",
+      "Rau",
+      "muống",
+      "xào",
+      "tỏi",
+      "khoảng",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá mì ăn liền vị tôm a-one gói 85g hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "mì",
+      "ăn",
+      "liền",
+      "vị",
+      "tôm",
+      "a-one",
+      "gói",
+      "85g",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá của cá ngừ là bao nhiêu",
+    "tokens": [
+      "Giá",
+      "của",
+      "cá",
+      "ngừ",
+      "là",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá khoảng bao nhiêu cho 5 tép thịt heo xay",
+    "tokens": [
+      "Giá",
+      "khoảng",
+      "bao",
+      "nhiêu",
+      "cho",
+      "5",
+      "tép",
+      "thịt",
+      "heo",
+      "xay"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Ước lượng giá mua 5 cam sành tươi ngon, mọng nước",
+    "tokens": [
+      "Ước",
+      "lượng",
+      "giá",
+      "mua",
+      "5",
+      "cam",
+      "sành",
+      "tươi",
+      "ngon,",
+      "mọng",
+      "nước"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Giá khoảng bao nhiêu cho một ít {UNIT} hành ngò",
+    "tokens": [
+      "Giá",
+      "khoảng",
+      "bao",
+      "nhiêu",
+      "cho",
+      "một",
+      "ít",
+      "{UNIT}",
+      "hành",
+      "ngò"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá thùng 24 hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "thùng",
+      "24",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá dầu ăn hạt cải simply hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "dầu",
+      "ăn",
+      "hạt",
+      "cải",
+      "simply",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá của sa tế là bao nhiêu",
+    "tokens": [
+      "Giá",
+      "của",
+      "sa",
+      "tế",
+      "là",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Ước lượng giá mua {QUANTITY} cá ngừ xốt cà tuna việt nam 140g",
+    "tokens": [
+      "Ước",
+      "lượng",
+      "giá",
+      "mua",
+      "{QUANTITY}",
+      "cá",
+      "ngừ",
+      "xốt",
+      "cà",
+      "tuna",
+      "việt",
+      "nam",
+      "140g"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Giá {INGREDIENT} hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "{INGREDIENT}",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Ước lượng giá mua hai dưa hấu đỏ tươi ngọt trái",
+    "tokens": [
+      "Ước",
+      "lượng",
+      "giá",
+      "mua",
+      "hai",
+      "dưa",
+      "hấu",
+      "đỏ",
+      "tươi",
+      "ngọt",
+      "trái"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Bao nhiêu tiền một tép cải ngọt khoảng 300g",
+    "tokens": [
+      "Bao",
+      "nhiêu",
+      "tiền",
+      "một",
+      "tép",
+      "cải",
+      "ngọt",
+      "khoảng",
+      "300g"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Ước tính giá 2 bó ớt say",
+    "tokens": [
+      "Ước",
+      "tính",
+      "giá",
+      "2",
+      "bó",
+      "ớt",
+      "say"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Ước lượng giá mua một nửa thịt heo xay cp",
+    "tokens": [
+      "Ước",
+      "lượng",
+      "giá",
+      "mua",
+      "một",
+      "nửa",
+      "thịt",
+      "heo",
+      "xay",
+      "cp"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O"
+    ]
+  },
+  {
+    "text": "Bao nhiêu tiền một quả 2",
+    "tokens": [
+      "Bao",
+      "nhiêu",
+      "tiền",
+      "một",
+      "quả",
+      "2"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-UNIT",
+      "B-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Giá má đùi gà cắt sẵn hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "má",
+      "đùi",
+      "gà",
+      "cắt",
+      "sẵn",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Ước tính giá 3 gam cà chua",
+    "tokens": [
+      "Ước",
+      "tính",
+      "giá",
+      "3",
+      "gam",
+      "cà",
+      "chua"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "B-UNIT",
+      "B-INGREDIENT",
+      "I-INGREDIENT"
+    ]
+  },
+  {
+    "text": "Chi phí nguyên liệu cho Chân giò hầm su su cà rốt khoảng bao nhiêu",
+    "tokens": [
+      "Chi",
+      "phí",
+      "nguyên",
+      "liệu",
+      "cho",
+      "Chân",
+      "giò",
+      "hầm",
+      "su",
+      "su",
+      "cà",
+      "rốt",
+      "khoảng",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "I-DISH",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá của rau muống là bao nhiêu",
+    "tokens": [
+      "Giá",
+      "của",
+      "rau",
+      "muống",
+      "là",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá thịt đùi heo 300g hiện tại thế nào",
+    "tokens": [
+      "Giá",
+      "thịt",
+      "đùi",
+      "heo",
+      "300g",
+      "hiện",
+      "tại",
+      "thế",
+      "nào"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Bao nhiêu tiền một tép {INGREDIENT}",
+    "tokens": [
+      "Bao",
+      "nhiêu",
+      "tiền",
+      "một",
+      "tép",
+      "{INGREDIENT}"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-UNIT",
+      "O"
+    ]
+  },
+  {
+    "text": "Ước lượng giá mua một nửa {INGREDIENT}",
+    "tokens": [
+      "Ước",
+      "lượng",
+      "giá",
+      "mua",
+      "một",
+      "nửa",
+      "{INGREDIENT}"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "O"
+    ]
+  },
+  {
+    "text": "Ước lượng giá mua một nửa tiêu đen",
+    "tokens": [
+      "Ước",
+      "lượng",
+      "giá",
+      "mua",
+      "một",
+      "nửa",
+      "tiêu",
+      "đen"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "O",
+      "O",
+      "B-QUANTITY",
+      "I-QUANTITY",
+      "I-INGREDIENT",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá của nước mắm là bao nhiêu",
+    "tokens": [
+      "Giá",
+      "của",
+      "nước",
+      "mắm",
+      "là",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giá của chuối già nam mỹ giàu dinh dưỡng, tiện lợi là bao nhiêu",
+    "tokens": [
+      "Giá",
+      "của",
+      "chuối",
+      "già",
+      "nam",
+      "mỹ",
+      "giàu",
+      "dinh",
+      "dưỡng,",
+      "tiện",
+      "lợi",
+      "là",
+      "bao",
+      "nhiêu"
+    ],
+    "intent": "ask_price_estimate",
+    "bio_labels": [
+      "O",
+      "O",
+      "B-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "I-INGREDIENT",
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Chào bạn",
+    "tokens": [
+      "Chào",
+      "bạn"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Help",
+    "tokens": [
+      "Help"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Ok",
+    "tokens": [
+      "Ok"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Thanks",
+    "tokens": [
+      "Thanks"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Ok",
+    "tokens": [
+      "Ok"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Help",
+    "tokens": [
+      "Help"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Chào bạn",
+    "tokens": [
+      "Chào",
+      "bạn"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giúp mình với",
+    "tokens": [
+      "Giúp",
+      "mình",
+      "với"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Bye",
+    "tokens": [
+      "Bye"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Help",
+    "tokens": [
+      "Help"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Xin chào",
+    "tokens": [
+      "Xin",
+      "chào"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Hello",
+    "tokens": [
+      "Hello"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Hẹn gặp lại",
+    "tokens": [
+      "Hẹn",
+      "gặp",
+      "lại"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Help",
+    "tokens": [
+      "Help"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Không hiểu",
+    "tokens": [
+      "Không",
+      "hiểu"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Cảm ơn",
+    "tokens": [
+      "Cảm",
+      "ơn"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Bye",
+    "tokens": [
+      "Bye"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Giúp mình với",
+    "tokens": [
+      "Giúp",
+      "mình",
+      "với"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thanks",
+    "tokens": [
+      "Thanks"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Cảm ơn",
+    "tokens": [
+      "Cảm",
+      "ơn"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Giúp mình với",
+    "tokens": [
+      "Giúp",
+      "mình",
+      "với"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Hẹn gặp lại",
+    "tokens": [
+      "Hẹn",
+      "gặp",
+      "lại"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Bye",
+    "tokens": [
+      "Bye"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Help",
+    "tokens": [
+      "Help"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Cảm ơn",
+    "tokens": [
+      "Cảm",
+      "ơn"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Không hiểu",
+    "tokens": [
+      "Không",
+      "hiểu"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Thanks",
+    "tokens": [
+      "Thanks"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Chào bạn",
+    "tokens": [
+      "Chào",
+      "bạn"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Chào bạn",
+    "tokens": [
+      "Chào",
+      "bạn"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Xin chào",
+    "tokens": [
+      "Xin",
+      "chào"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Không hiểu",
+    "tokens": [
+      "Không",
+      "hiểu"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Xin chào",
+    "tokens": [
+      "Xin",
+      "chào"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Không hiểu",
+    "tokens": [
+      "Không",
+      "hiểu"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Hello",
+    "tokens": [
+      "Hello"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Giúp mình với",
+    "tokens": [
+      "Giúp",
+      "mình",
+      "với"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Help",
+    "tokens": [
+      "Help"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Thanks",
+    "tokens": [
+      "Thanks"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Thanks",
+    "tokens": [
+      "Thanks"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  },
+  {
+    "text": "Hẹn gặp lại",
+    "tokens": [
+      "Hẹn",
+      "gặp",
+      "lại"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O",
+      "O",
+      "O"
+    ]
+  },
+  {
+    "text": "Bye",
+    "tokens": [
+      "Bye"
+    ],
+    "intent": "fallback",
+    "bio_labels": [
+      "O"
+    ]
+  }
+]

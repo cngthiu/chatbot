@@ -1,0 +1,8 @@
+{
+  "search_recipe": 0,
+  "ask_recipe_detail": 1,
+  "refine_search": 2,
+  "add_ingredients_to_cart": 3,
+  "ask_price_estimate": 4,
+  "fallback": 5
+}

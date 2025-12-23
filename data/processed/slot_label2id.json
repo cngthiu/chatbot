@@ -1,0 +1,11 @@
+{
+  "O": 0,
+  "B-DISH": 1,
+  "I-DISH": 2,
+  "B-INGREDIENT": 3,
+  "I-INGREDIENT": 4,
+  "B-QUANTITY": 5,
+  "B-UNIT": 6,
+  "B-TASTE": 7,
+  "B-EXCLUDE": 8
+}
