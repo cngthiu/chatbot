@@ -1,4 +1,4 @@
-# ✅ routes.py của bạn là ĐÚNG với kiến trúc mới (DI qua request.app.state).
+# routes.py của bạn là ĐÚNG với kiến trúc mới (DI qua request.app.state).
 # Vấn đề còn lại là main.py phải "wire" đúng các object vào app.state.
 # Dưới đây là main.py chuẩn tương thích 100% với routes.py bạn gửi.
 
@@ -10,7 +10,8 @@ import os
 import uvicorn
 from fastapi import FastAPI
 from pymongo import MongoClient
-
+from dotenv import load_dotenv
+load_dotenv()
 from src.api.routes import router
 from src.core.config import Paths, MONGO_URI, MONGO_DB, MONGO_PRODUCTS_COL, MONGO_RECIPES_COL
 

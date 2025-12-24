@@ -25,10 +25,10 @@ SLOTS = [
 ]
 
 # Mongo settings
-MONGO_URI: str = os.getenv("MONGO_URI","mongodb+srv://thieulk23:thieulk23@cluster0.es7pd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-MONGO_DB: str = os.getenv("MONGO_DB","test")
-MONGO_RECIPES_COL: str = os.getenv("MONGO_RECIPES_COL", "recipies")
-MONGO_PRODUCTS_COL: str = os.getenv("MONGO_PRODUCTS_COL", "products")
+MONGO_URI: str = os.getenv("MONGO_URI")
+MONGO_DB: str = os.getenv("MONGO_DB")
+MONGO_RECIPES_COL: str = os.getenv("MONGO_RECIPES_COL")
+MONGO_PRODUCTS_COL: str = os.getenv("MONGO_PRODUCTS_COL")
 
 @dataclass(frozen=True)
 class Paths:
