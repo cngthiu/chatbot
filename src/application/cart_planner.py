@@ -369,6 +369,7 @@ class CartPlanner:
                     "net_weight": float(p.net_weight),
                     "measure_unit": p.measure_unit,
                     "stock": int(p.stock),
+                    "image": p.image,
                 },
                 "quantity_to_buy": int(qty_to_buy),
                 "match_reason": best.reason,

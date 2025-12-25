@@ -1,13 +1,19 @@
-
-# smart_food_bot/src/api/schemas.py
+# =========================
+# FILE: smart_food_bot/src/api/schemas.py
+# (UPDATED: add recipe_detail field into ChatResponse)
+# =========================
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Literal
+from typing import Dict, List, Any, Optional
 from pydantic import BaseModel, Field
+
+
 class NLUResult(BaseModel):
     intent: str
     intent_confidence: float = Field(ge=0.0, le=1.0)
     slots: Dict[str, List[str]]
+
+
 class Recipe(BaseModel):
     id: str
     title: str
@@ -18,28 +24,25 @@ class Recipe(BaseModel):
     image: Optional[str] = None
     score: float = 0.0
 
+
 class ChatRequest(BaseModel):
-    session_id: str = Field(..., min_length=1, description="Client session id to keep context")
-    text: str = Field(..., min_length=1, description="User message")
+    session_id: str = Field(..., description="Client session id to keep context")
+    text: str = Field(..., example="Cho mình công thức canh bí đỏ thịt bằm")
 
 
 class ChatResponse(BaseModel):
-    """
-    Designed for smooth multi-turn:
-    - reply: assistant response text
-    - nlu: optional (when ML executed)
-    - recipes/picked_recipe/plan/cart: optional payloads
-    - context: minimal context snapshot for debugging UI
-    """
     session_id: str
     reply: str
-
     nlu: Optional[Dict[str, Any]] = None
     recipes: Optional[List[Dict[str, Any]]] = None
     picked_recipe: Optional[Dict[str, Any]] = None
+
+    recipe_detail: Optional[Dict[str, Any]] = None
+
     plan: Optional[Dict[str, Any]] = None
     cart: Optional[Dict[str, Any]] = None
     context: Optional[Dict[str, Any]] = None
+
 
 class PlanCartRequest(BaseModel):
     recipe_id: Optional[str] = None

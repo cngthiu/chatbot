@@ -79,17 +79,22 @@ class MongoProductRepository(ProductReadRepo):
         try:
             price = float(x.get("price", 0))
             discount = float(x.get("discount", 0))
-            # Final price (apply percentage discount if present)
-            final_price = price * (1.0 - discount / 100.0)
+            image = None
+            img = x.get("image")
+            if isinstance(img, list) and img:
+                image = str(img[0])
+            elif isinstance(img, str):
+                image = img
             return Product(
                 sku=str(x.get("sku") or x.get("_id") or ""),
                 name=str(x.get("name") or "").strip(),
-                price=max(0.0, final_price),
+                price=max(0.0, price),
                 unit=str(x.get("unit") or "Unit"),
                 net_weight=float(x.get("net_weight") or 0),
                 measure_unit=str(x.get("measure_unit") or "g"),
                 stock=int(x.get("stock") or 0),
                 discount=discount,
+                image=image,
             )
         except Exception as e:
             log.exception("Invalid product document: %s", x)

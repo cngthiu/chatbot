@@ -28,9 +28,10 @@ class Recipe:
 class Product:
     sku: str
     name: str
-    price: float
+    price: float  # base price before discount
     unit: str
     net_weight: float
     measure_unit: str
     stock: int
     discount: float
+    image: str | None = None
