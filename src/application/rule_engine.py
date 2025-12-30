@@ -1,5 +1,6 @@
 # =========================
 # FILE: smart_food_bot/src/application/rule_engine.py
+# (ADD: standalone number => servings when awaiting servings)
 # =========================
 from __future__ import annotations
 
@@ -15,11 +16,12 @@ _RE_PLAN_CART = re.compile(r"(?:lên\s*giỏ|tạo\s*giỏ|mua\s*nguyên\s*liệ
 _RE_SHOW_CART = re.compile(r"(?:xem\s*giỏ|giỏ\s*hàng|cart)\b", re.IGNORECASE)
 _RE_EXCLUDE = re.compile(r"(?:không|bỏ)\s+([a-zA-ZÀ-ỹ\s]+)$", re.IGNORECASE)
 
-# Social rules (natural conversation)
 _RE_GREET = re.compile(r"\b(xin\s*chào|chào|hello|hi|hey)\b", re.IGNORECASE)
 _RE_THANKS = re.compile(r"\b(cảm\s*ơn|cam\s*on|thanks|thx)\b", re.IGNORECASE)
 _RE_BYE = re.compile(r"\b(tạm\s*biệt|bye|bai|chào\s*nhé|hẹn\s*gặp\s*lại)\b", re.IGNORECASE)
 _RE_SORRY = re.compile(r"\b(xin\s*lỗi|sorry)\b", re.IGNORECASE)
+
+_RE_STANDALONE_INT = re.compile(r"^\s*(\d{1,2})\s*(?:phần|khẩu\s*phần|người)?\s*$", re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -29,16 +31,12 @@ class RuleResult:
 
 
 class RuleEngine:
-    """
-    WHY: Rule-first for speed + natural conversation.
-    """
-
     def try_match(self, text: str, state: SessionState) -> Optional[RuleResult]:
         t = (text or "").strip()
         if not t:
             return None
 
-        # --- Social (highest priority)
+        # Social first
         if _RE_GREET.search(t):
             return RuleResult("greet", {})
         if _RE_THANKS.search(t):
@@ -48,7 +46,13 @@ class RuleEngine:
         if _RE_SORRY.search(t):
             return RuleResult("apology", {})
 
-        # --- Task rules
+        # ✅ If bot is awaiting servings, treat a bare number as servings
+        if state.awaiting == "servings":
+            m = _RE_STANDALONE_INT.match(t)
+            if m:
+                return RuleResult("set_servings", {"user_servings": int(m.group(1))})
+
+        # Commands
         m = _RE_PICK_NUMBER.search(t)
         if m:
             return RuleResult("pick_recipe", {"index_1based": int(m.group(1))})

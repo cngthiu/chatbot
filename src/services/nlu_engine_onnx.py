@@ -1,8 +1,13 @@
-# smart_food_bot/src/services/nlu_engine.py
+# =========================
+# FILE: smart_food_bot/src/services/nlu_engine.py
+# (REWRITE: fix slot alignment + better VN tokenization)
+# =========================
 from __future__ import annotations
 
 import os
 import logging
+import re
+import unicodedata
 from typing import Dict, List, Any, Tuple, Optional
 
 import numpy as np
@@ -13,6 +18,12 @@ from transformers import AutoTokenizer
 from src.core.config import Paths, MAX_LEN
 
 log = logging.getLogger("services.nlu_onnx")
+
+_WORD_RE = re.compile(r"[0-9]+|[A-Za-zÀ-ỹ]+(?:[-'][A-Za-zÀ-ỹ]+)*", re.UNICODE)
+
+
+def _normalize_space(s: str) -> str:
+    return " ".join((s or "").strip().split())
 
 
 def _load_mappings(model_dir: str) -> Tuple[Dict[str, int], Dict[str, int], Dict[int, str], Dict[int, str]]:
@@ -31,47 +42,77 @@ def _softmax(x: np.ndarray, axis: int = -1) -> np.ndarray:
     return ex / (np.sum(ex, axis=axis, keepdims=True) + 1e-9)
 
 
-def _merge_bio(words: List[str], slots: List[str]) -> Dict[str, List[str]]:
+def _tokenize_words_vi(text: str) -> List[str]:
+    """
+    WHY: text.split() breaks VN punctuation and causes slot drift.
+    """
+    t = _normalize_space(text)
+    return _WORD_RE.findall(t)
+
+
+def _merge_bio(words: List[str], tags: List[str]) -> Dict[str, List[str]]:
     """
     Merge BIO tags into entity spans.
-    Output keys are entity types: DISH/INGREDIENT/...
+    Fixes:
+      - Orphan I-xxx => treat as B-xxx
+      - Jumping entity types => flush previous
+      - Dedup + clean
     """
     entities: Dict[str, List[str]] = {}
     cur_type: Optional[str] = None
     cur_tokens: List[str] = []
 
-    for w, tag in zip(words, slots):
-        if tag == "O" or tag is None:
-            if cur_type and cur_tokens:
-                entities.setdefault(cur_type, []).append(" ".join(cur_tokens))
-            cur_type, cur_tokens = None, []
+    def flush() -> None:
+        nonlocal cur_type, cur_tokens
+        if cur_type and cur_tokens:
+            val = _normalize_space(" ".join(cur_tokens))
+            if val:
+                entities.setdefault(cur_type, []).append(val)
+        cur_type, cur_tokens = None, []
+
+    for w, tag in zip(words, tags):
+        tag = tag or "O"
+        if tag == "O":
+            flush()
             continue
 
-        if tag.startswith("B-"):
-            if cur_type and cur_tokens:
-                entities.setdefault(cur_type, []).append(" ".join(cur_tokens))
-            cur_type = tag[2:]
-            cur_tokens = [w]
-        elif tag.startswith("I-") and cur_type == tag[2:]:
-            cur_tokens.append(w)
-        else:
-            # Tag lỗi/nhảy type → đóng span cũ
-            if cur_type and cur_tokens:
-                entities.setdefault(cur_type, []).append(" ".join(cur_tokens))
-            cur_type, cur_tokens = None, []
+        if "-" not in tag:
+            flush()
+            continue
 
-    if cur_type and cur_tokens:
-        entities.setdefault(cur_type, []).append(" ".join(cur_tokens))
+        pref, typ = tag.split("-", 1)
+        typ = typ.strip().upper()
+
+        if pref == "I" and cur_type is None:
+            pref = "B"
+
+        if pref == "B" or (cur_type is not None and typ != cur_type):
+            flush()
+            cur_type = typ
+            cur_tokens = [w]
+        else:
+            cur_tokens.append(w)
+
+    flush()
+
+    # deduplicate per type
+    for k, vals in list(entities.items()):
+        seen = set()
+        dedup: List[str] = []
+        for v in vals:
+            key = v.lower()
+            if key not in seen:
+                seen.add(key)
+                dedup.append(v)
+        entities[k] = dedup
+
     return entities
 
 
 class _WordEncoder:
     """
-    Robust word->token encoding for ONNX inference, hỗ trợ slow tokenizer.
-    WHY: PhoBERT tokenizer nhiều khi không phải 'fast', nên không có word_ids().
-    Strategy:
-      - Tokenize theo từng word với tiền tố khoảng trắng (roberta-style) để gần khớp encode thực tế.
-      - Tự xây input_ids, attention_mask, và positions của 'first sub-token' mỗi word.
+    Robust word->token encoding for ONNX inference.
+    FIX: return mapping of (word_index -> first_subtoken_pos) to avoid drift.
     """
 
     def __init__(self, tokenizer, max_len: int):
@@ -81,55 +122,53 @@ class _WordEncoder:
         self.cls_id = tokenizer.cls_token_id
         self.sep_id = tokenizer.sep_token_id
         self.pad_id = tokenizer.pad_token_id
-
         if self.cls_id is None or self.sep_id is None or self.pad_id is None:
             raise ValueError("Tokenizer missing special token ids (cls/sep/pad).")
 
-    def encode(self, words: List[str]) -> Tuple[np.ndarray, np.ndarray, List[int]]:
-        # Build token ids manually: [CLS] + words(subtokens) + [SEP]
+    def encode(self, words: List[str]) -> Tuple[np.ndarray, np.ndarray, List[Tuple[int, int]]]:
         input_ids: List[int] = [self.cls_id]
-        first_token_pos: List[int] = []
+        mapping: List[Tuple[int, int]] = []  # (word_idx, token_pos)
 
-        for i, w in enumerate(words):
-            # RoBERTa-family uses space-sensitive BPE; prefix space except first word
-            ww = w if i == 0 else " " + w
+        for wi, w in enumerate(words):
+            ww = w if wi == 0 else " " + w
             piece_ids = self.tok.encode(ww, add_special_tokens=False)
+
             if not piece_ids:
-                # if tokenizer can't encode, skip mapping (will be ignored)
                 continue
-            # record first sub-token position (current length)
-            first_token_pos.append(len(input_ids))
+
+            pos = len(input_ids)
+            mapping.append((wi, pos))
             input_ids.extend(piece_ids)
 
-            # early truncate (keep room for [SEP])
             if len(input_ids) >= self.max_len - 1:
                 break
 
-        # Add SEP
         input_ids = input_ids[: self.max_len - 1]
         input_ids.append(self.sep_id)
 
-        # Pad to max_len
         attn = [1] * len(input_ids)
         if len(input_ids) < self.max_len:
             pad_len = self.max_len - len(input_ids)
             input_ids.extend([self.pad_id] * pad_len)
             attn.extend([0] * pad_len)
 
-        # Clip first_token_pos if beyond max_len
-        first_token_pos = [p for p in first_token_pos if p < self.max_len]
+        # clip mapping
+        mapping = [(wi, p) for (wi, p) in mapping if p < self.max_len]
 
-        # ONNX needs int64
-        input_ids_np = np.array([input_ids], dtype=np.int64)     # [1, T]
-        attn_np = np.array([attn], dtype=np.int64)               # [1, T]
-        return input_ids_np, attn_np, first_token_pos
+        return (
+            np.array([input_ids], dtype=np.int64),
+            np.array([attn], dtype=np.int64),
+            mapping,
+        )
 
 
 class NLUEngineONNX:
     """
     ONNX inference engine for PhoBERT Joint Intent+Slot.
-    - Uses onnxruntime
-    - Returns intent + merged BIO entities
+    Upgrades:
+      - VN word tokenizer (regex)
+      - correct word->token mapping (prevents slot drift)
+      - BIO merge fixes
     """
 
     def __init__(
@@ -146,13 +185,11 @@ class NLUEngineONNX:
         if not os.path.exists(self.onnx_path):
             raise FileNotFoundError(f"ONNX model not found: {self.onnx_path}")
 
-        # Load tokenizer from trained directory (best)
         self.tokenizer = AutoTokenizer.from_pretrained(model_dir, use_fast=True)
         self.encoder = _WordEncoder(self.tokenizer, max_len=max_len)
 
         _, _, self.id2intent, self.id2slot = _load_mappings(model_dir)
 
-        # Providers
         if providers is None:
             providers = ["CPUExecutionProvider"]
         self.session = ort.InferenceSession(self.onnx_path, providers=providers)
@@ -160,19 +197,20 @@ class NLUEngineONNX:
         log.info("NLUEngineONNX loaded: %s | providers=%s", self.onnx_path, providers)
 
     def predict(self, text: str) -> Dict[str, Any]:
-        text = (text or "").strip()
+        text = _normalize_space(text)
         if not text:
             return {"intent": "fallback", "intent_confidence": 0.0, "slots": {}}
 
-        words = text.split()
-        input_ids, attention_mask, first_pos = self.encoder.encode(words)
+        words = _tokenize_words_vi(text)
+        if not words:
+            return {"intent": "fallback", "intent_confidence": 0.0, "slots": {}}
 
-        # Run ONNX
+        input_ids, attention_mask, mapping = self.encoder.encode(words)
+
         ort_out = self.session.run(
             None,
             {"input_ids": input_ids, "attention_mask": attention_mask},
         )
-        # output order: ["intent_logits", "slot_logits"]
         intent_logits = ort_out[0]  # [1, C_intents]
         slot_logits = ort_out[1]    # [1, T, C_slots]
 
@@ -181,22 +219,15 @@ class NLUEngineONNX:
         intent = self.id2intent.get(intent_id, "fallback")
         intent_conf = float(intent_probs[intent_id])
 
-        # Slot: lấy label tại first sub-token mỗi word
         slot_pred_ids = np.argmax(slot_logits[0], axis=-1).tolist()  # [T]
-        word_level_tags: List[str] = []
-        used_words = 0
-        for p in first_pos:
-            if used_words >= len(words):
-                break
-            tag = self.id2slot.get(int(slot_pred_ids[p]), "O")
-            word_level_tags.append(tag)
-            used_words += 1
 
-        # If for some reason mapping shorter than words, pad with O
-        if len(word_level_tags) < len(words):
-            word_level_tags.extend(["O"] * (len(words) - len(word_level_tags)))
+        # build word-level tags using mapping
+        word_tags = ["O"] * len(words)
+        for wi, pos in mapping:
+            if 0 <= wi < len(words) and 0 <= pos < len(slot_pred_ids):
+                word_tags[wi] = self.id2slot.get(int(slot_pred_ids[pos]), "O")
 
-        entities = _merge_bio(words, word_level_tags)
+        entities = _merge_bio(words, word_tags)
 
         return {
             "intent": intent,
