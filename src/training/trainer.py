@@ -51,19 +51,21 @@ def collate(batch: List[Dict[str, torch.Tensor]]) -> Dict[str, torch.Tensor]:
 
 def train():
     set_seed(SEED)
-    # Load data & mappings
+    
+    # 1. Load Data
     with open(Paths.DATA_RAW, "r", encoding="utf-8") as f:
         data = json.load(f)
+    random.shuffle(data) 
     with open(os.path.join(Paths.DATA_PROCESSED_DIR, "slot_label2id.json"), "r", encoding="utf-8") as f:
         slot_label2id = json.load(f)
     with open(os.path.join(Paths.DATA_PROCESSED_DIR, "intent2id.json"), "r", encoding="utf-8") as f:
         intent2id = json.load(f)
 
-    # Split
+    # Split 90/10
     split = int(0.9 * len(data))
     train_data = data[:split]
     val_data = data[split:]
-
+    
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, use_fast=True)
     config = AutoConfig.from_pretrained(MODEL_NAME)
     model = PhoBERTJointNLU(config, num_intents=len(intent2id), num_slots=len(slot_label2id))
@@ -74,27 +76,24 @@ def train():
 
     train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True, collate_fn=collate, num_workers=0)
     val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE, shuffle=False, collate_fn=collate, num_workers=0)
-
-    # Optimizer / Scheduler
+    
     optim = AdamW(model.parameters(), lr=LR)
     total_steps = len(train_loader) * EPOCHS // max(1, ACCUM_STEPS)
     warmup = int(0.1 * total_steps)
     scheduler = get_linear_schedule_with_warmup(optim, warmup, total_steps)
-
-    scaler = torch.cuda.amp.GradScaler(enabled=(DEVICE == "cuda"))  # 1650 Max-Q Optimization: AMP FP16
-    best_val = float("inf")
+    scaler = torch.cuda.amp.GradScaler(enabled=(DEVICE == "cuda"))
+    
+    best_val_loss = float("inf")
 
     for epoch in range(1, EPOCHS + 1):
         model.train()
-        running = 0.0
-        optim.zero_grad(set_to_none=True)
+        running_loss = 0.0
         for step, batch in enumerate(train_loader, start=1):
             batch = {k: v.to(DEVICE) for k, v in batch.items()}
-            with torch.cuda.amp.autocast(enabled=(DEVICE == "cuda")):  # FP16 compute
+            with torch.cuda.amp.autocast(enabled=(DEVICE == "cuda")):
                 out = model(**batch)
                 loss = out["loss"] / ACCUM_STEPS
             scaler.scale(loss).backward()
-
             if step % ACCUM_STEPS == 0:
                 scaler.unscale_(optim)
                 torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
@@ -102,23 +101,36 @@ def train():
                 scaler.update()
                 optim.zero_grad(set_to_none=True)
                 scheduler.step()
-            running += loss.item()
+            running_loss += loss.item()
 
-        # Validation (no gradients)
+        # === EVALUATION LOOP (UPDATED) ===
         model.eval()
         val_loss = 0.0
+        correct_intents = 0
+        total_samples = 0
+        
         with torch.no_grad():
             for batch in val_loader:
                 batch = {k: v.to(DEVICE) for k, v in batch.items()}
                 with torch.cuda.amp.autocast(enabled=(DEVICE == "cuda")):
                     out = model(**batch)
-                    vloss = out["loss"]
-                val_loss += vloss.item()
-        val_loss /= max(1, len(val_loader))
-        print(f"Epoch {epoch} | train_loss={running/len(train_loader):.4f} | val_loss={val_loss:.4f}")
+                    val_loss += out["loss"].item()
+                    
+                    # Tính Intent Accuracy sơ bộ
+                    logits = out["intent_logits"] # [B, num_intents]
+                    preds = torch.argmax(logits, dim=1)
+                    labels = batch["intent_labels"]
+                    correct_intents += (preds == labels).sum().item()
+                    total_samples += labels.size(0)
 
-        if val_loss < best_val:
-            best_val = val_loss
+        avg_train_loss = running_loss / len(train_loader)
+        avg_val_loss = val_loss / len(val_loader)
+        val_acc = correct_intents / total_samples if total_samples > 0 else 0.0
+
+        print(f"Epoch {epoch} | Train Loss: {avg_train_loss:.4f} | Val Loss: {avg_val_loss:.4f} | Intent Acc: {val_acc:.4f}")
+
+        if avg_val_loss < best_val_loss:
+            best_val_loss = avg_val_loss
             save_all(model, tokenizer, intent2id, slot_label2id)
 
 def save_all(model, tokenizer, intent2id: Dict[str, int], slot_label2id: Dict[str, int]):

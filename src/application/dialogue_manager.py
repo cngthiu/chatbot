@@ -52,16 +52,18 @@ class DialogueManager:
         st = self.sessions.get_or_create(session_id)
         st.last_user_text = text
 
-        # ✅ Rule-first, but now rule can parse standalone "3" when awaiting servings
+        # 1. Rule-Base Priority (Ưu tiên luật cứng)
+        # Check rule trước xem có phải chào hỏi/tạm biệt không
         rule = self.rules.try_match(text, st)
         if rule:
+            # Nếu rule khớp, trả lời luôn, KHÔNG chạy NLU hay Search tốn kém
             out = await self._handle_rule(rule, st)
             self.sessions.save(st)
             return out
 
-        # ✅ If awaiting something important, do NOT run speculative NLU/search.
+        # 2. Check Blocking State (Đang đợi nhập liệu số lượng)
         if st.awaiting == "servings":
-            # User didn't give a number -> ask again, don't search new recipes
+            # User nhập số khi đang hỏi khẩu phần -> Không cần NLU phức tạp
             out = {
                 "session_id": session_id,
                 "reply": self.composer.prompt_servings(recipe_title=st.last_recipe_title),
@@ -70,75 +72,104 @@ class DialogueManager:
             self.sessions.save(st)
             return out
 
-        # Normal path: concurrent NLU + search
-        nlu_coro = anyio.to_thread.run_sync(self.nlu.predict, text)
-        search_coro = anyio.to_thread.run_sync(self.search_uc, text, 5)
-        nlu_out, raw_results = await asyncio.gather(nlu_coro, search_coro)
-
+        # 3. NLU Inference (Chạy mô hình hiểu ngôn ngữ trước)
+        # Chuyển sang run_sync để không block event loop
+        nlu_out = await anyio.to_thread.run_sync(self.nlu.predict, text)
+        
         nlu_out = dict(nlu_out or {})
         nlu_out["slots"] = normalize_slots(nlu_out.get("slots", {}) or {})
         slots: Dict[str, List[str]] = nlu_out.get("slots", {}) or {}
 
         intent = (nlu_out.get("intent") or "fallback").strip()
         conf = float(nlu_out.get("intent_confidence", 0.0) or 0.0)
+
+        # Regex override cho intent hỏi chi tiết (vì model đôi khi miss)
         if _RE_ASK_RECIPE_DETAIL.search(text):
             intent = "ask_recipe_detail"
+            conf = 1.0  # Force tin tưởng
+        
         st.last_intent = intent
-
-        if conf < self.min_intent_conf and intent != "ask_recipe_detail":
+        
+        # 4. Search Logic (Chỉ chạy khi cần thiết!)
+        raw_results = []
+        
+        # Điều kiện để kích hoạt Search Engine:
+        # - Intent là tìm kiếm món ăn
+        # - Hoặc Confidence quá thấp (Fallback) -> Cần search cầu may
+        should_search = (intent in ("search_recipe", "refine_search")) or (conf < self.min_intent_conf)
+        
+        if should_search:
+            # Lúc này mới tốn tài nguyên gọi Search
+            query_for_search = text
+            if intent in ("search_recipe", "refine_search"):
+                query_for_search = self._build_refined_query(text, slots)
+            
+            raw_results = await anyio.to_thread.run_sync(self.search_uc, query_for_search, 5)
             st.last_search_results = raw_results
+
+        # 5. Routing Logic (Điều hướng phản hồi)
+        
+        # Case: Fallback / Low Confidence
+        if conf < self.min_intent_conf and intent != "ask_recipe_detail":
+            # Nếu search cầu may có kết quả -> Gợi ý luôn
+            reply = self.composer.clarify()
+            if raw_results:
+                 st.awaiting = "pick_recipe" # Cho phép user chọn luôn
+            
             out = {
                 "session_id": session_id,
                 "nlu": nlu_out,
-                "reply": self.composer.clarify(),
+                "reply": reply,
+                "recipes": raw_results, # Vẫn trả về kết quả search cầu may
+                "context": self._context_view(st),
+            }
+            self.sessions.save(st)
+            return out
+
+        # Case: Search Recipe
+        if intent in ("search_recipe", "refine_search"):
+            st.awaiting = "pick_recipe"
+            out = {
+                "session_id": session_id,
+                "nlu": nlu_out,
+                "reply": self.composer.prompt_pick_recipe(results_count=len(raw_results)),
                 "recipes": raw_results,
                 "context": self._context_view(st),
             }
             self.sessions.save(st)
             return out
 
-        if intent in ("search_recipe", "refine_search"):
-            refined_query = self._build_refined_query(text, slots)
-            refined_results = await anyio.to_thread.run_sync(self.search_uc, refined_query, 5)
-            st.last_search_results = refined_results
-            st.awaiting = "pick_recipe"  # ✅ waiting for user to choose
-            out = {
-                "session_id": session_id,
-                "nlu": nlu_out,
-                "reply": self.composer.prompt_pick_recipe(results_count=len(refined_results)),
-                "recipes": refined_results,
-                "context": self._context_view(st),
-            }
-            self.sessions.save(st)
-            return out
-
+        # Case: Ask Detail (Hỏi cách làm)
         if intent == "ask_recipe_detail":
+            # Logic cũ của bạn ok, nhưng cần truyền raw_results vào nếu có
             detail = await self._get_recipe_detail(st, slots, raw_results, text)
             if detail is None:
-                st.last_search_results = raw_results
+                # Nếu không tìm thấy detail, fallback về search
+                search_backup = await anyio.to_thread.run_sync(self.search_uc, text, 5)
+                st.last_search_results = search_backup
                 st.awaiting = "pick_recipe"
                 out = {
                     "session_id": session_id,
                     "nlu": nlu_out,
-                    "reply": self.composer.prompt_pick_recipe(results_count=len(raw_results)),
-                    "recipes": raw_results,
+                    "reply": "Mình chưa rõ bạn hỏi món nào. Có phải mấy món này không?",
+                    "recipes": search_backup,
                     "context": self._context_view(st),
                 }
-                self.sessions.save(st)
-                return out
-
-            st.last_recipe_id = detail.get("id") or st.last_recipe_id
-            st.last_recipe_title = detail.get("title") or st.last_recipe_title
-            out = {
-                "session_id": session_id,
-                "nlu": nlu_out,
-                "reply": self.composer.recipe_detail_intro(st.last_recipe_title or "món này"),
-                "recipe_detail": detail,
-                "context": self._context_view(st),
-            }
+            else:
+                st.last_recipe_id = detail.get("id") or st.last_recipe_id
+                st.last_recipe_title = detail.get("title") or st.last_recipe_title
+                out = {
+                    "session_id": session_id,
+                    "nlu": nlu_out,
+                    "reply": self.composer.recipe_detail_intro(st.last_recipe_title or "món này"),
+                    "recipe_detail": detail,
+                    "context": self._context_view(st),
+                }
             self.sessions.save(st)
             return out
 
+        # Case: Add to Cart / Price Estimate...
+        # (Giữ nguyên logic cũ cho các case này, vì chúng xử lý dựa trên Context)
         if intent == "add_ingredients_to_cart":
             plan_out = await self._plan_cart_from_context(st, raw_results)
             self.sessions.save(st)
@@ -157,12 +188,12 @@ class DialogueManager:
             self.sessions.save(st)
             return out
 
-        st.last_search_results = raw_results
+        # Final Fallback
         out = {
             "session_id": session_id,
             "nlu": nlu_out,
             "reply": self.composer.fallback(),
-            "recipes": raw_results,
+            "recipes": [],
             "context": self._context_view(st),
         }
         self.sessions.save(st)

@@ -63,18 +63,9 @@ class MongoRecipeRepository(RecipeReadRepo):
         return self._by_id.get(str(recipe_id))
 
 class MongoProductRepository(ProductReadRepo):
-    """
-    Read-only product repository backed by MongoDB.
-    Simple name-based lookup for building cart/price estimates.
-    """
+
     def __init__(self, col: Collection) -> None:
         self._col = col
-        self._items: List[Product] = [self._parse_product(doc) for doc in col.find({})]
-        if not self._items:
-            log.warning("MongoProductRepository: products collection is empty")
-        else:
-            log.info("MongoProductRepository loaded %d products", len(self._items))
-
     def _parse_product(self, x: Dict[str, Any]) -> Product:
         try:
             price = float(x.get("price", 0))
@@ -97,26 +88,29 @@ class MongoProductRepository(ProductReadRepo):
                 image=image,
             )
         except Exception as e:
-            log.exception("Invalid product document: %s", x)
-            raise ValueError(f"Invalid product document: {e}") from e
+            log.error(f"Error parsing product: {e}")
+            # Return dummy to avoid crash
+            return Product(sku="ERR", name="Error", price=0)
 
     def all(self) -> List[Product]:
-        return self._items
+        # Cảnh báo: Chỉ dùng khi debug. Production không nên gọi hàm này.
+        log.warning("Calling .all() on ProductRepo is expensive!")
+        return [self._parse_product(doc) for doc in self._col.find({})]
 
     def find_by_name(self, name: str, top_k: int = 5) -> List[Product]:
-        q = (name or "").lower().strip()
+        """
+        Tìm kiếm bằng MongoDB Regex thay vì loop trong RAM.
+        Nhanh hơn và luôn có dữ liệu mới nhất.
+        """
+        q = (name or "").strip()
         if not q:
             return []
-        # naive overlap score; stable tiebreak by price asc then stock desc
-        def _score(p: Product) -> int:
-            p_name = p.name.lower()
-            if q in p_name:
-                return 3
-            qs = set(q.split())
-            ps = set(p_name.split())
-            inter = len(qs & ps)
-            return 1 if inter > 0 else 0
-
-        candidates = [p for p in self._items if _score(p) > 0]
-        candidates.sort(key=lambda p: (p.price, -p.stock))
-        return candidates[:top_k]
+            
+        cursor = self._col.find(
+            {"name": {"$regex": q, "$options": "i"}}
+        ).limit(top_k)
+        
+        results = [self._parse_product(doc) for doc in cursor]
+        
+        results.sort(key=lambda p: p.price)
+        return results
