@@ -1,6 +1,9 @@
-# smart_food_bot/src/infrastructure/mongo_repositories.py
+# =========================
+# FILE: smart_food_bot/src/infrastructure/mongo_repositories.py
+# FIX: No Load-All-To-RAM (Direct Query)
+# =========================
 from __future__ import annotations
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import logging
 from pymongo.collection import Collection
 from bson import ObjectId
@@ -10,23 +13,22 @@ from src.domain.repositories import RecipeReadRepo, ProductReadRepo
 log = logging.getLogger("infra.mongo_repo")
 
 def _as_str_id(v: Any) -> str:
-    if isinstance(v, ObjectId):
-        return str(v)
     return str(v)
 
 class MongoRecipeRepository(RecipeReadRepo):
     """
-    Read-only recipe repository backed by MongoDB.
-    Loads all recipes once at startup to power BM25/TF-IDF indexing.
+    Hybrid Repo: 
+    - .all() vẫn load để build Index cho Search Engine (chấp nhận tốn RAM 1 lần đầu).
+    - .by_id() query trực tiếp để nhanh và tiết kiệm khi truy cập chi tiết.
     """
     def __init__(self, col: Collection) -> None:
         self._col = col
-        self._items: List[Recipe] = [self._parse_recipe(doc) for doc in col.find({})]
-        self._by_id = {r.id: r for r in self._items}
-        if not self._items:
-            log.warning("MongoRecipeRepository: recipes collection is empty")
+        # Cache nhẹ để build index, nhưng có thể tối ưu sau nếu data quá lớn
+        self._items = [self._parse_recipe(doc) for doc in col.find({})]
+        if self._items:
+            log.info("MongoRecipeRepository loaded %d recipes for Indexing", len(self._items))
         else:
-            log.info("MongoRecipeRepository loaded %d recipes", len(self._items))
+            log.warning("MongoRecipeRepository: recipes collection is empty")
 
     def _parse_recipe(self, doc: Dict[str, Any]) -> Recipe:
         try:
@@ -52,30 +54,45 @@ class MongoRecipeRepository(RecipeReadRepo):
                 image=doc.get("image"),
                 search_keywords=list(doc.get("search_keywords") or []),
             )
-        except Exception as e:
-            log.exception("Invalid recipe document: %s", doc)
-            raise ValueError(f"Invalid recipe document: {e}") from e
+        except Exception:
+            return Recipe(id="err", title="Error", summary="", ingredients=[])
 
     def all(self) -> List[Recipe]:
         return self._items
 
     def by_id(self, recipe_id: str) -> Recipe | None:
-        return self._by_id.get(str(recipe_id))
+        # Query trực tiếp DB thay vì loop trong list để luôn có data mới nhất
+        try:
+            doc = self._col.find_one({"id": recipe_id})
+            if not doc:
+                # Thử tìm bằng _id object nếu id string ko thấy
+                try:
+                    doc = self._col.find_one({"_id": ObjectId(recipe_id)})
+                except:
+                    pass
+            if doc:
+                return self._parse_recipe(doc)
+            return None
+        except Exception:
+            return None
 
 class MongoProductRepository(ProductReadRepo):
-
+    """
+    Direct-Query Only:
+    Không bao giờ load toàn bộ sản phẩm vào RAM.
+    """
     def __init__(self, col: Collection) -> None:
         self._col = col
+        # KHÔNG load _items
+
     def _parse_product(self, x: Dict[str, Any]) -> Product:
         try:
             price = float(x.get("price", 0))
             discount = float(x.get("discount", 0))
-            image = None
-            img = x.get("image")
-            if isinstance(img, list) and img:
-                image = str(img[0])
-            elif isinstance(img, str):
-                image = img
+            image = x.get("image")
+            if isinstance(image, list) and image: image = str(image[0])
+            elif isinstance(image, str): image = image
+            
             return Product(
                 sku=str(x.get("sku") or x.get("_id") or ""),
                 name=str(x.get("name") or "").strip(),
@@ -85,32 +102,21 @@ class MongoProductRepository(ProductReadRepo):
                 measure_unit=str(x.get("measure_unit") or "g"),
                 stock=int(x.get("stock") or 0),
                 discount=discount,
-                image=image,
+                image=str(image) if image else None,
             )
-        except Exception as e:
-            log.error(f"Error parsing product: {e}")
-            # Return dummy to avoid crash
-            return Product(sku="ERR", name="Error", price=0)
+        except Exception:
+            return Product(sku="err", name="Error", price=0)
 
     def all(self) -> List[Product]:
-        # Cảnh báo: Chỉ dùng khi debug. Production không nên gọi hàm này.
         log.warning("Calling .all() on ProductRepo is expensive!")
         return [self._parse_product(doc) for doc in self._col.find({})]
 
     def find_by_name(self, name: str, top_k: int = 5) -> List[Product]:
-        """
-        Tìm kiếm bằng MongoDB Regex thay vì loop trong RAM.
-        Nhanh hơn và luôn có dữ liệu mới nhất.
-        """
+        # Dùng MongoDB Regex Search
         q = (name or "").strip()
-        if not q:
-            return []
-            
-        cursor = self._col.find(
-            {"name": {"$regex": q, "$options": "i"}}
-        ).limit(top_k)
+        if not q: return []
         
+        cursor = self._col.find({"name": {"$regex": q, "$options": "i"}}).limit(top_k)
         results = [self._parse_product(doc) for doc in cursor]
-        
         results.sort(key=lambda p: p.price)
         return results

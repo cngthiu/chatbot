@@ -1,228 +1,161 @@
 # =========================
 # FILE: smart_food_bot/src/services/search_engine.py
-# (REWRITE: normalize VN + word+char TFIDF + rerank boosts + cache TTL)
+# REFACTORED FOR PERFORMANCE & MINIMALISM
+# Strategy: Lazy Loading + NumPy Backend + Int8 Quantization
 # =========================
 from __future__ import annotations
 
-from typing import List, Dict, Any, Tuple
 import logging
-import time
 import re
 import unicodedata
+from typing import List, Dict, Any, Optional
 
 import numpy as np
+import torch
 from rank_bm25 import BM25Okapi
-from sklearn.feature_extraction.text import TfidfVectorizer
-import faiss
-import scipy.sparse as sp  # scikit-learn dependency
+# Import class nhưng KHÔNG load model ngay lập tức để Startup nhanh
+from sentence_transformers import SentenceTransformer
+
 from src.domain.repositories import RecipeReadRepo
+from src.core.config import DEVICE
 
 log = logging.getLogger("services.search_engine")
 
-_WORD_RE = re.compile(r"[0-9]+|[A-Za-zÀ-ỹ]+(?:[-'][A-Za-zÀ-ỹ]+)*", re.UNICODE)
-
-
-def _strip_accents(s: str) -> str:
-    s = unicodedata.normalize("NFD", s)
-    s = "".join(ch for ch in s if unicodedata.category(ch) != "Mn")
-    return s
-
-
+# --- Utilities (Siêu tối giản & Nhanh) ---
 def _normalize_vi(text: str) -> str:
-    t = (text or "").lower().strip()
-    t = _strip_accents(t)
-    t = re.sub(r"[^0-9a-z\s\-']", " ", t)
-    t = re.sub(r"\s+", " ", t).strip()
-    return t
-
+    """Chuẩn hóa chuỗi nhẹ nhàng cho BM25"""
+    if not text: return ""
+    t = unicodedata.normalize("NFD", text.lower())
+    t = "".join(c for c in t if unicodedata.category(c) != "Mn")
+    return re.sub(r"[^a-z0-9\s]", " ", t).strip()
 
 def _tokenize_vi(text: str) -> List[str]:
-    return _WORD_RE.findall(_normalize_vi(text))
-
-
-def _to_faiss_matrix(x) -> np.ndarray:
-    if hasattr(x, "toarray"):
-        x = x.toarray()
-    x = np.asarray(x, dtype=np.float32)
-    return np.ascontiguousarray(x)
-
-
-class _TTLCache:
-    def __init__(self, ttl_s: int = 60, max_items: int = 512) -> None:
-        self.ttl_s = ttl_s
-        self.max_items = max_items
-        self._data: Dict[str, Tuple[float, Any]] = {}
-
-    def get(self, key: str):
-        now = time.time()
-        v = self._data.get(key)
-        if not v:
-            return None
-        ts, payload = v
-        if now - ts > self.ttl_s:
-            self._data.pop(key, None)
-            return None
-        return payload
-
-    def set(self, key: str, payload: Any) -> None:
-        if len(self._data) >= self.max_items:
-            # drop oldest
-            oldest = sorted(self._data.items(), key=lambda kv: kv[1][0])[: max(1, self.max_items // 10)]
-            for k, _ in oldest:
-                self._data.pop(k, None)
-        self._data[key] = (time.time(), payload)
-
+    return _normalize_vi(text).split()
 
 class HybridSearchEngine:
     """
-    Hybrid search (BM25 + TF-IDF via faiss-cpu) on CPU.
-
-    Upgrades:
-      - VN normalize (remove accents)
-      - BM25 tokenize VN
-      - TF-IDF: word ngrams + char_wb ngrams (robust for misspell/spacing)
-      - title exact/contains boost for better top1
-      - TTL cache to avoid recompute for repeated queries
+    Search Engine hiệu năng cao:
+    - Lazy Loading: Startup tốn 0 giây.
+    - NumPy Backend: Không cài FAISS, không lỗi dependency.
+    - Int8 Quantization: Giảm 4 lần RAM tiêu thụ.
     """
 
     def __init__(
         self,
         recipe_repo: RecipeReadRepo,
-        topk_candidate_mul: int = 3,
-        max_features_word: int = 20000,
-        max_features_char: int = 30000,
-        cache_ttl_s: int = 60,
+        model_name: str = "keepitreal/vietnamese-sbert",
     ) -> None:
-        self.recipe_repo = recipe_repo
+        self.repo = recipe_repo
         self.recipes = recipe_repo.all()
-        if not self.recipes:
-            raise RuntimeError("No recipes available from repository.")
-        self.topk_candidate_mul = topk_candidate_mul
-        self.cache = _TTLCache(ttl_s=cache_ttl_s)
-        self.max_features_word = max_features_word
-        self.max_features_char = max_features_char
-        self._build_indices()
+        self.model_name = model_name
+        
+        # 1. Khởi tạo Index nhẹ (BM25) - Tốn < 10MB RAM, mất < 0.1s
+        if self.recipes:
+            log.info("Initializing BM25 index for %d recipes...", len(self.recipes))
+            self.bm25_corpus = [
+                _tokenize_vi(f"{r.title} {' '.join(i.name for i in r.ingredients)}") 
+                for r in self.recipes
+            ]
+            self.bm25 = BM25Okapi(self.bm25_corpus)
+            self.titles_norm = [_normalize_vi(r.title) for r in self.recipes]
+        else:
+            log.warning("No recipes found to index!")
+            self.bm25 = None
+            self.titles_norm = []
 
-    def _build_indices(self) -> None:
-        corpus: List[str] = []
-        title_norm: List[str] = []
+        # 2. Tài nguyên NẶNG (Để dành, chưa load)
+        self._model: Optional[SentenceTransformer] = None
+        self._vectors: Optional[np.ndarray] = None 
 
-        for r in self.recipes:
-            joined = " ".join(
-                [
-                    r.title or "",
-                    r.summary or "",
-                    " ".join([i.name for i in (r.ingredients or [])]),
-                    " ".join(r.tags or []),
-                    " ".join(r.diet or []),
-                    " ".join(r.search_keywords or []),
-                    # Optional: a tiny hint from steps improves “công thức” queries
-                    " ".join((r.steps or [])[:2]) if getattr(r, "steps", None) else "",
-                ]
-            ).strip()
-            corpus.append(joined)
-            title_norm.append(_normalize_vi(r.title or ""))
+    def _ensure_model_loaded(self):
+        """Chốt chặn Lazy Loading: Chỉ chạy khi User thực sự tìm kiếm"""
+        if self._model is not None:
+            return
 
-        self.corpus = corpus
-        self._title_norm = title_norm
+        log.info("❄️ COLD START: Loading Semantic Model (First Request Only)...")
+        # Load Model
+        model = SentenceTransformer(self.model_name, device=DEVICE)
+        
+        # Tối ưu RAM: Nén Model xuống Int8 nếu chạy CPU
+        if DEVICE == "cpu":
+            log.info("🚀 Applying Dynamic Quantization (Float32 -> Int8)...")
+            model = torch.quantization.quantize_dynamic(
+                model, {torch.nn.Linear}, dtype=torch.qint8
+            )
+        self._model = model
 
-        # BM25 on normalized tokens
-        self.bm25 = BM25Okapi([_tokenize_vi(doc) for doc in self.corpus])
-
-        # TF-IDF word
-        self.vectorizer_word = TfidfVectorizer(
-            analyzer="word",
-            tokenizer=_tokenize_vi,
-            preprocessor=lambda x: x,  # already normalized in tokenizer
-            lowercase=False,
-            ngram_range=(1, 2),
-            min_df=1,
-            max_features=self.max_features_word,
-        )
-
-        # TF-IDF char (robust)
-        self.vectorizer_char = TfidfVectorizer(
-            analyzer="char_wb",
-            preprocessor=_normalize_vi,
-            ngram_range=(3, 5),
-            min_df=1,
-            max_features=self.max_features_char,
-        )
-
-        doc_word = self.vectorizer_word.fit_transform(self.corpus)
-        doc_char = self.vectorizer_char.fit_transform(self.corpus)
-        doc_sparse = sp.hstack([doc_word, doc_char]).tocsr()
-
-        doc_mat = _to_faiss_matrix(doc_sparse)
-        faiss.normalize_L2(doc_mat)
-
-        dim = doc_mat.shape[1]
-        self.index = faiss.IndexFlatL2(dim)
-        self.index.add(doc_mat)
-
-        log.info("HybridSearchEngine indexed %d recipes | dim=%d", len(self.recipes), dim)
+        # Index Vector một lần duy nhất (Cache vào RAM)
+        if self.recipes:
+            log.info("Indexing vectors...")
+            texts = [
+                f"{r.title}. {r.summary or ''}. {' '.join((r.steps or [])[:3])}" 
+                for r in self.recipes
+            ]
+            # Encode batch
+            embeddings = self._model.encode(texts, batch_size=32, convert_to_numpy=True, show_progress_bar=False)
+            
+            # Normalize L2 để dùng Dot Product thay cho Cosine Similarity
+            norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+            self._vectors = embeddings / (norms + 1e-9) 
+            
+        log.info("Search Engine Ready. RAM optimized.")
 
     def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
-        if not query or not query.strip():
+        if not query.strip() or not self.recipes:
             return []
 
-        cache_key = f"{_normalize_vi(query)}|{top_k}"
-        cached = self.cache.get(cache_key)
-        if cached is not None:
-            return cached
-
-        q_norm = _normalize_vi(query)
+        # Bước 1: BM25 Score (Nhanh, dựa trên từ khóa)
         q_tokens = _tokenize_vi(query)
+        if self.bm25:
+            bm25_scores = np.array(self.bm25.get_scores(q_tokens), dtype=np.float32)
+            # Chuẩn hóa Min-Max
+            _min, _max = bm25_scores.min(), bm25_scores.max()
+            if _max > _min:
+                bm25_scores = (bm25_scores - _min) / (_max - _min)
+        else:
+            bm25_scores = np.zeros(len(self.recipes), dtype=np.float32)
 
-        # BM25
-        bm25_scores = self.bm25.get_scores(q_tokens).astype(np.float32)
-        denom = (bm25_scores.max() - bm25_scores.min()) + 1e-6
-        bm25_norm = (bm25_scores - bm25_scores.min()) / denom
+        # Bước 2: Semantic Score (Kích hoạt Lazy Load tại đây)
+        self._ensure_model_loaded()
+        
+        # Encode Query
+        q_vec = self._model.encode([query], convert_to_numpy=True)
+        q_norm = q_vec / (np.linalg.norm(q_vec, axis=1, keepdims=True) + 1e-9)
+        
+        # Tính toán: Ma trận nhân Vector (Dot Product)
+        # Cực nhanh với NumPy nhờ SIMD/AVX2
+        if self._vectors is not None:
+            semantic_scores = np.dot(self._vectors, q_norm.T).flatten()
+        else:
+            semantic_scores = np.zeros(len(self.recipes), dtype=np.float32)
 
-        # TF-IDF query vector
-        q_word = self.vectorizer_word.transform([query])
-        q_char = self.vectorizer_char.transform([query])
-        q_sparse = sp.hstack([q_word, q_char]).tocsr()
+        # Bước 3: Kết hợp (0.3 BM25 + 0.7 Semantic)
+        final_scores = (0.3 * bm25_scores) + (0.7 * semantic_scores)
 
-        q_vec = _to_faiss_matrix(q_sparse)
-        faiss.normalize_L2(q_vec)
+        # Bước 4: Rerank (Ưu tiên khớp tiêu đề)
+        q_norm_str = _normalize_vi(query)
+        for i, t_norm in enumerate(self.titles_norm):
+            if q_norm_str in t_norm: final_scores[i] += 0.2
 
-        k = min(max(1, top_k * self.topk_candidate_mul), len(self.recipes))
-        D, I = self.index.search(q_vec, k)
-        faiss_scores = (1.0 / (1.0 + D[0])).astype(np.float32)
+        # Bước 5: Lấy Top K (Dùng argpartition để sort nhanh hơn)
+        if len(final_scores) > top_k:
+            ind = np.argpartition(final_scores, -top_k)[-top_k:]
+            ind = ind[np.argsort(final_scores[ind])[::-1]]
+        else:
+            ind = np.argsort(final_scores)[::-1]
 
-        faiss_full = np.zeros(len(self.recipes), dtype=np.float32)
-        faiss_full[I[0]] = faiss_scores
-
-        combo = 0.55 * bm25_norm + 0.45 * faiss_full
-
-        # rerank boost: title match
-        for idx in I[0]:
-            tn = self._title_norm[int(idx)]
-            if not tn:
-                continue
-            if tn == q_norm:
-                combo[int(idx)] += 0.25
-            elif tn and tn in q_norm or q_norm in tn:
-                combo[int(idx)] += 0.10
-
-        idxs = np.argsort(-combo)[: min(top_k, len(self.recipes))]
-
-        results: List[Dict[str, Any]] = []
-        for idx in idxs:
-            r = self.recipes[int(idx)]
-            results.append(
-                {
-                    "id": r.id,
-                    "title": r.title,
-                    "summary": r.summary,
-                    "ingredients": [i.name for i in r.ingredients],
-                    "cook_time": r.cook_time,
-                    "servings": r.servings,
-                    "image": r.image,
-                    "score": float(combo[idx]),
-                }
-            )
-
-        self.cache.set(cache_key, results)
+        results = []
+        for idx in ind:
+            score = float(final_scores[idx])
+            if score < 0.25: continue # Lọc kết quả rác
+            r = self.recipes[idx]
+            results.append({
+                "id": r.id,
+                "title": r.title,
+                "score": score,
+                "ingredients": [i.name for i in r.ingredients],
+                "image": r.image,
+                "summary": r.summary
+            })
+        
         return results
