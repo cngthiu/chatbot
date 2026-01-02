@@ -53,12 +53,23 @@ class DialogueManager:
         self.composer = composer or ResponseComposer()
 
     async def handle(self, session_id: str, text: str) -> Dict[str, Any]:
+        t = (text or "").strip()
         st = self.sessions.get_or_create(session_id)
-        st.last_user_text = text
+        st.last_user_text = t
+
+        if not t:
+            out = {
+                "session_id": session_id,
+                "reply": self.composer.fallback(),
+                "recipes": [],
+                "context": self._context_view(st),
+            }
+            self.sessions.save(st)
+            return out
 
         # 1. INTELLIGENT PARSING (Bắt số người ăn NGAY LẬP TỨC)
         # Kể cả khi user đang search hay đang chat vu vơ, nếu có số liệu thì lượm ngay.
-        servings_match = _RE_SERVINGS_DETECT.search(text)
+        servings_match = _RE_SERVINGS_DETECT.search(t)
         if servings_match:
             try:
                 detected_servings = int(servings_match.group(1))
@@ -93,7 +104,7 @@ class DialogueManager:
             # Fallthrough xuống dưới để xử lý tiếp
 
         # 4. NLU Inference
-        nlu_out = await anyio.to_thread.run_sync(self.nlu.predict, text)
+        nlu_out = await anyio.to_thread.run_sync(self.nlu.predict, t)
         nlu_out = dict(nlu_out or {})
         nlu_out["slots"] = normalize_slots(nlu_out.get("slots", {}) or {})
         slots: Dict[str, List[str]] = nlu_out.get("slots", {}) or {}
@@ -113,9 +124,9 @@ class DialogueManager:
         should_search = (intent in ("search_recipe", "refine_search")) or (conf < self.min_intent_conf)
         
         if should_search:
-            query_for_search = text
+            query_for_search = t
             if intent in ("search_recipe", "refine_search"):
-                query_for_search = self._build_refined_query(text, slots)
+                query_for_search = self._build_refined_query(t, slots)
             
             raw_results = await anyio.to_thread.run_sync(self.search_uc, query_for_search, 5)
             st.last_search_results = raw_results
@@ -141,7 +152,7 @@ class DialogueManager:
             self.sessions.save(st)
             return out
 
-        # Case: Ask Detail (Hỏi chi tiết)
+        # Case: Ask Detail (Hỏi chi tiết) -> chỉ trả công thức, không mở popup nguyên liệu
         if intent == "ask_recipe_detail":
             return await self._show_detail_flow(st, nlu_out, slots, raw_results, text, session_id)
 
@@ -207,22 +218,18 @@ class DialogueManager:
         """
         Khi user chọn món:
         1. Hiển thị thông tin chi tiết (nguyên liệu).
-        2. Nếu đã có số người -> Tính toán luôn giỏ hàng nháp (Preview).
-        3. Hỏi user có muốn thêm vào giỏ thật không.
+        2. Tính toán luôn giỏ hàng (dùng servings mặc định nếu user chưa nhập).
         """
         # Lấy chi tiết món ăn (ingredients, steps)
         detail = await anyio.to_thread.run_sync(self.recipe_detail_uc, st.last_recipe_id)
         
-        reply = f"Tuyệt vời! Món **{st.last_recipe_title}** này ngon lắm.\n"
-        reply += f"- Thời gian nấu: {detail.get('cook_time', 'N/A')}\n"
-        
-        # Nếu chưa có số người ăn -> Hỏi
+        reply = f"Đã chọn **{st.last_recipe_title}**. Mình mở danh sách nguyên liệu phù hợp nhé."
+
+        # Nếu chưa có số người ăn -> dùng servings mặc định của món hoặc 1
         if not st.user_servings:
-            st.awaiting = "servings"
-            reply += "\nBạn định nấu cho mấy người ăn để mình tính lượng mua?"
-            return {"reply": reply, "recipe_detail": detail, "context": self._context_view(st)}
-        
-        # Nếu ĐÃ CÓ số người ăn -> Tính toán luôn
+            st.user_servings = int(detail.get("servings") or 1)
+            st.awaiting = None
+
         plan = await anyio.to_thread.run_sync(
             self.cart_planner.plan,
             st.last_recipe_id,
@@ -230,29 +237,14 @@ class DialogueManager:
             None,
             st.constraints,
         )
-        
-        # Hiển thị preview nguyên liệu cần mua
-        reply += f"\nVới {st.user_servings} người ăn, mình đã tính sẵn nguyên liệu:\n"
-        
-        # Logic hiển thị ngắn gọn danh sách cần mua từ plan
-        cart_preview = plan.get("cart", {}).get("items", [])
-        if cart_preview:
-            items_str = ", ".join([f"{item['product_name']} ({item['qty']} {item['unit']})" for item in cart_preview[:3]])
-            if len(cart_preview) > 3:
-                items_str += f", và {len(cart_preview)-3} món khác..."
-            reply += f"> {items_str}\n"
-        
-        reply += "\nBạn có muốn **thêm vào giỏ hàng** luôn không? (Gõ 'Ok' hoặc 'Có')"
-        
-        # Lưu ý: Chưa save vào st.cart chính thức, chỉ show preview.
-        # Nhưng để tiện, ta có thể set context để câu lệnh tiếp theo "Có" sẽ trigger add_cart.
-        # Ở đây ta giả lập user cần confirm.
-        
+
         return {
             "reply": reply,
             "recipe_detail": detail,
-            "plan_preview": plan, # Frontend có thể render cái này
-            "context": self._context_view(st)
+            "plan": plan,
+            "cart": plan.get("cart"),
+            "open_plan": True,
+            "context": self._context_view(st),
         }
 
     async def _show_detail_flow(self, st, nlu_out, slots, raw_results, text, session_id):
@@ -272,10 +264,15 @@ class DialogueManager:
         
         st.last_recipe_id = detail.get("id") or st.last_recipe_id
         st.last_recipe_title = detail.get("title") or st.last_recipe_title
-        
-        # Reuse logic auto show
-        auto_res = await self._auto_show_detail_and_plan(st, detail)
-        return {"session_id": session_id, "nlu": nlu_out, **auto_res}
+
+        reply = self.composer.recipe_detail_intro(st.last_recipe_title)
+        return {
+            "session_id": session_id,
+            "nlu": nlu_out,
+            "reply": reply,
+            "recipe_detail": detail,
+            "context": self._context_view(st),
+        }
 
     def _build_refined_query(self, text: str, slots: Dict[str, List[str]]) -> str:
         parts = [text]
@@ -318,8 +315,10 @@ class DialogueManager:
              return {"reply": self.composer.prompt_pick_recipe(results_count=0), "recipes": []}
              
         if st.user_servings is None:
-             st.awaiting = "servings"
-             return {"reply": self.composer.prompt_servings(recipe_title=st.last_recipe_title)}
+             # dùng servings mặc định của món để tránh hỏi nhiều
+             detail = await anyio.to_thread.run_sync(self.recipe_detail_uc, st.last_recipe_id)
+             st.user_servings = int(detail.get("servings") or 1)
+             st.awaiting = None
              
         # Thực hiện Plan thật sự và lưu vào session
         plan = await anyio.to_thread.run_sync(self.cart_planner.plan, st.last_recipe_id, st.user_servings, None, st.constraints)

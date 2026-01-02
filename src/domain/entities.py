@@ -24,6 +24,21 @@ class Recipe:
     image: str | None
     search_keywords: List[str]
 
+    def to_dict(self) -> Dict:
+        return {
+            "id": self.id,
+            "title": self.title,
+            "summary": self.summary,
+            "ingredients": [i.__dict__ for i in self.ingredients],
+            "steps": self.steps,
+            "cook_time": self.cook_time,
+            "servings": self.servings,
+            "tags": self.tags,
+            "diet": self.diet,
+            "image": self.image,
+            "search_keywords": self.search_keywords,
+        }
+
 @dataclass(frozen=True)
 class Product:
     sku: str

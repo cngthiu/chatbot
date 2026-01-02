@@ -71,6 +71,9 @@ class HybridSearchEngine:
         """Chốt chặn Lazy Loading: Chỉ chạy khi User thực sự tìm kiếm"""
         if self._model is not None:
             return
+        if not self.recipes:
+            # Không có dữ liệu để index, bỏ qua để tránh tải model vô ích
+            return
 
         log.info("❄️ COLD START: Loading Semantic Model (First Request Only)...")
         # Load Model

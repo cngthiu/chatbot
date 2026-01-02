@@ -83,12 +83,7 @@ class ResponseComposer:
         )
         if warnings:
             return f"{base} Lưu ý: {warnings[0]}"
-        return _pick(
-            [
-                f"{base} Bạn muốn chỉnh khẩu phần hay bỏ nguyên liệu nào không?",
-                f"{base} Bạn muốn mình đổi sang sản phẩm rẻ hơn/đang có hàng không?",
-            ]
-        )
+        return f"{base} Bạn có thể bỏ chọn hoặc chỉnh số lượng trong danh sách nguyên liệu."
 
     def price_estimate_intro(self) -> str:
         return _pick(
